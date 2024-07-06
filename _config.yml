@@ -1,0 +1,70 @@
+# Welcome to Jekyll!
+#
+# This config file is meant for settings that affect your whole blog, values
+# which you are expected to set up once and rarely edit after that. If you find
+# yourself editing this file very often, consider using Jekyll's data files
+# feature for the data you need to update frequently.
+#
+# For technical reasons, this file is *NOT* reloaded automatically when you use
+# 'bundle exec jekyll serve'. If you change this file, please restart the server process.
+#
+# If you need help with YAML syntax, here are some quick references for you:
+# https://learn-the-web.algonquindesign.ca/topics/markdown-yaml-cheat-sheet/#yaml
+# https://learnxinyminutes.com/docs/yaml/
+#
+# Site settings
+# These are used to personalize your new site. If you look in the HTML files,
+# you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
+# You can create any custom variable you would like, and they will be accessible
+# in the templates via {{ site.myvariable }}.
+
+title: The Very Bad Days • Grim humor grunge rock Ghostbusters • Minneapolis, MN
+email: your-email@example.com
+description: >- # this means to ignore newlines until "baseurl:"
+  The Very Bad Days are a childishly grim B-horror flick of a band, exploring punk existential Ghostbustery with a mix of unexpected sweetness and dark humor.
+  They conjure a spooky yet playful blend of grungy originals and revisionist punk covers, weaving eerie tales of monsters, ghosts, and socially anxious demons into their music.
+  From haunting accounts of spectral creatures to emotional eulogies for dolphin suicides and 90's pop nostalgia, their songs explore the macabre side of the terrible, horrible, no good, very bad days.
+  Imagine Jack Black joining Nirvana, Tom Waits writing for The Presidents of the United States of America, or Amigo the Devil crooning at a meeting of the Midnight Society.
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "https://theverybaddays.com" # the base hostname & protocol for your site, e.g. http://example.com
+twitter_username: jekyllrb
+github_username:  jekyll
+
+# Social settings
+twitter_username: theverybaddays
+github_username:  jimfrankenstein
+facebook_url: "https://facebook.com/theverybaddays"
+instagram_url: "https://instagram.com/theverybaddays"
+soundcloud_url: "https://soundcloud.com/theverybaddays"
+youtube_url: "https://youtube.com/@theverybaddays"
+bandcamp_url: "https://theverybaddays.bandcamp.com"
+
+# Build settings
+# theme: minima
+plugins:
+  - jekyll-sass-converter
+
+# Build settings
+# markdown: kramdown
+# permalink: /post/:title/
+image_path: "/images"
+logo_img: "logo.png"
+
+# Styles
+sass:
+  sass_dir: _sass
+  # style: compressed
+
+# Exclusions and Gems
+exclude:
+  - firebase.json
+  - .sass-cache/
+  - .jekyll-cache/
+  - gemfiles/
+  - Gemfile
+  - Gemfile.lock
+  - node_modules/
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
