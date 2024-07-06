@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta content="ie=edge" http-equiv="x-ua-compatible" />
+        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover"
+            name="viewport" />
+        <title>{{ page.title }}</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true" />
+        <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+    </head>
+
+    <body>
+        <div class="sc-bdfBwQ sc-gsTCUz sc-eGCarw dddSHA bhdLno cKEKss">
+            <div class="sc-bdfBwQ sc-gsTCUz ewSEqQ bhdLno">
+                <div class="sc-bdfBwQ dLqIok">
+                    {% include header.html %}
+                    {{ content }}
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
