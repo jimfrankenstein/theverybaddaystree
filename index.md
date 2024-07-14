@@ -3,9 +3,6 @@ layout: default
 title: Home
 ---
 <div class="sc-bdfBwQ jrDHLp">
-    <a class="show-poster" href="https://www.instagram.com/redwingbarrelhouse" target="_blank">
-        <img src="/images/24-07-12-show-poster.jpg" alt="24-07-12 show poster" role="presentation" />
-    </a>
     <div data-id="355317540" class="sc-bdfBwQ pkAuV">
         <div id="355317540" class="sc-bdfBwQ sc-kIeTtH jAmcnV cnxSGb"></div>
         <div data-testid="StyledContainer" class="sc-bdfBwQ sc-dmlrTW eua-dhZ kGoTFc group"
