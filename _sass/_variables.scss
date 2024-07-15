@@ -20,16 +20,10 @@ Color
 :root {
   /* Base */
   --main-bkg-color: var(--gray-1);
-  --modal-bkg-color: var(--white);
-  --modal-backdrop-opacity: 50%; /* Must be a percent to work with framer motion */
   --surface-bkg-color: var(--white);
   --border-color: var(--gray-5);
   --border-color-dim: var(--gray-3);
   --border-color-extra-dim: var(--gray-2);
-  --dropdown-bkg-active-color: var(--gray-3);
-  --dropdown-bkg-color: var(--white);
-  --dropdown-bkg-hover-color: var(--gray-2);
-  --dropdown-scrollbar-bkg-color: var(--gray-5);
   --error-color: var(--red-core);
   --text-color: var(--black);
   --text-color-dim: var(--gray-7);
@@ -60,17 +54,11 @@ Color
 @media (prefers-color-scheme: dark) {
 :root {
   /* Base */
-  --main-bkg-color: var(--purple-9);
-  --modal-bkg-color: var(--purple-8);
-  --modal-backdrop-opacity: 60%; /* Must be a percent to work with framer motion */
-  --surface-bkg-color: var(--purple-8);
+  --main-bkg-color: var(--gray-9);
+  --surface-bkg-color: var(--gray-8);
   --border-color: var(--gray-5);
   --border-color-dim: var(--gray-7);
   --border-color-extra-dim: var(--gray-8);
-  --dropdown-bkg-active-color: var(--purple-6);
-  --dropdown-bkg-color: var(--purple-8);
-  --dropdown-bkg-hover-color: var(--purple-7);
-  --dropdown-scrollbar-bkg-color: var(--gray-4);
   --error-color: var(--red-core);
   --text-color: var(--white);
   --text-color-dim: var(--gray-3);

@@ -1,5 +1,89 @@
 ---
 ---
+
+/*
+    BASIC
+*/
+
+// primary styles
 main {
-    color: blue;
+    color: var(--text-color);
+    
+    .track-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        width: 100%;
+        height: 100vw;
+        padding: var(--spacing-3);
+        transition: flex var(--hover-transition);
+
+        .art-bkg {
+            background-position: top left;
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 0;
+            filter: blur(10px);
+        }
+
+        .track-interactive {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-2);
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            max-width: 480px;
+
+            img {
+                display: block;
+                width: 100%;
+                border-radius: var(--border-radius-large);
+                box-shadow: var(--box-shadow-small);
+            }
+        }
+    }
+    .details-container {
+        padding: var(--spacing-3) var(--spacing-5);
+        transition: flex var(--hover-transition);
+    }
+}
+
+/*
+    RESPONSIVE
+*/
+
+// narrow
+@media screen and (min-width: 768px) {
+    main {
+        display: flex;
+
+        .track-container {
+            flex: 1 0 50%;
+            height: 100vh;
+            padding: var(--spacing-4);
+        }
+        .details-container {
+            flex: 1 0 50%;
+        }
+    }
+}
+
+// desktop
+@media screen and (min-width: 1024px) {
+    main {
+        .track-container {
+            flex: 1 0 67%;
+            padding: var(--spacing-6);
+        }
+        .details-container {
+            flex: 1 0 33%;
+        }
+    }
 }
