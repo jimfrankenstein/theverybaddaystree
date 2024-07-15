@@ -18,7 +18,7 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: The Very Bad Days • Grim humor grunge rock Ghostbusters • Minneapolis, MN
+title: The Very Bad Days
 email: press@theverybaddays.com
 description: >- # this means to ignore newlines until "baseurl:"
   The Very Bad Days are a childishly grim B-horror flick of a band, exploring punk existential Ghostbustery with a mix of unexpected sweetness and dark humor.
@@ -41,6 +41,7 @@ bandcamp_url: "https://theverybaddays.bandcamp.com"
 # theme: minima
 plugins:
   - jekyll-sass-converter
+  - jekyll-livereload
 
 # Build settings
 # markdown: kramdown

@@ -1,6 +1,6 @@
 ---
-layout: default
-title: Home
+layout: tree
+title: Grim humor grunge rock Ghostbusters • Minneapolis, MN
 ---
 <div class="sc-bdfBwQ jrDHLp">
     <div data-id="355317540" class="sc-bdfBwQ pkAuV">

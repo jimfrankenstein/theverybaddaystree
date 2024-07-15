@@ -1,0 +1,104 @@
+/* ---------------------------------------------
+Color tokens
+------------------------------------------------ */
+:root {
+    --black: #000000;
+    --gray-9: #17161a;
+    --gray-8: #2f2c35;
+    --gray-7: #46434f;
+    --gray-6: #5e596a;
+    --gray-5: #756f84;
+    --gray-4: #a29dae;
+    --gray-3: #d7d5df;
+    --gray-2: #efedf5;
+    --gray-1: #fbfafd;
+    --white: #ffffff;
+  
+    --blue-9: #001833;
+    --blue-8: #002966;
+    --blue-7: #023aa7;
+    --blue-6: #0045f6;
+    --blue-5: #007aff;
+    --blue-4: #3395ff;
+    --blue-3: #66afff;
+    --blue-2: #99caff;
+    --blue-1: #e5f1ff;
+    --blue-core: var(--blue-5);
+  
+    --mint-9: #051d18;
+    --mint-8: #0a3b30;
+    --mint-7: #0f5949;
+    --mint-6: #147761;
+    --mint-5: #19957a;
+    --mint-4: #1eb392;
+    --mint-3: #23d1ab;
+    --mint-2: #6ce0c7;
+    --mint-1: #daf7f1;
+    --mint-core: var(--mint-3);
+  
+    --green-9: #061c0a;
+    --green-8: #0b3913;
+    --green-7: #11551d;
+    --green-6: #177226;
+    --green-5: #1c8e30;
+    --green-4: #22aa39;
+    --green-3: #27c743;
+    --green-2: #2de34c;
+    --green-1: #cbf8d3;
+    --green-core: var(--green-2);
+  
+    --yellow-9: #201800;
+    --yellow-8: #403100;
+    --yellow-7: #604900;
+    --yellow-6: #806200;
+    --yellow-5: #9f7a00;
+    --yellow-4: #bf9200;
+    --yellow-3: #dfab00;
+    --yellow-2: #ffc300;
+    --yellow-1: #fff0bf;
+    --yellow-core: var(--yellow-2);
+  
+    --orange-9: #2b0f00;
+    --orange-8: #551f00;
+    --orange-7: #802e00;
+    --orange-6: #aa3d00;
+    --orange-5: #d54d00;
+    --orange-4: #ff5c00;
+    --orange-3: #ff8540;
+    --orange-2: #ffae80;
+    --orange-1: #ffebdf;
+    --orange-core: var(--orange-4);
+  
+    --red-9: #2b080e;
+    --red-8: #550f1c;
+    --red-7: #80172b;
+    --red-6: #aa1e39;
+    --red-5: #d52647;
+    --red-4: #ff2d55;
+    --red-3: #ff6280;
+    --red-2: #ff96aa;
+    --red-1: #ffe5ea;
+    --red-core: var(--red-4);
+  
+    --pink-9: #2b001a;
+    --pink-8: #550033;
+    --pink-7: #80004d;
+    --pink-6: #aa0066;
+    --pink-5: #d50080;
+    --pink-4: #ff0099;
+    --pink-3: #ff40b3;
+    --pink-2: #ff80cc;
+    --pink-1: #ffe3f4;
+    --pink-core: var(--pink-4);
+  
+    --purple-9: #16093a;
+    --purple-8: #2c1275;
+    --purple-7: #411baf;
+    --purple-6: #5724e9;
+    --purple-5: #7349ed;
+    --purple-4: #8f6df0;
+    --purple-3: #ab92f4;
+    --purple-2: #c7b6f8;
+    --purple-1: #f0ebff;
+    --purple-core: var(--purple-6);
+  }
