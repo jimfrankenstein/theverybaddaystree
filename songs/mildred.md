@@ -1,0 +1,42 @@
+---
+layout: songs
+title: Template Song
+album: Scapegoats
+components: ['tabs']
+short_name: mildred
+
+song_name: Mildred
+song_tagline: This song right here...
+
+song_description: This is a really really really great song.
+
+spotify_id: 11gSEMITGe6vmhCqtT07LJ
+
+lyrics: |-
+    Do you remember that summer that we spent out on the lake?
+    We were young, and our whole family was staying with Aunt Mildred.
+    Nobody really noticed her warm eyes and solemn smile,
+    but I took to her quite fondly. And she showed me all around her brand new house
+    that our father built upon the ashes of the old family estate
+    that he had recently acquired.
+
+    Aunt Mildred showed me how to use the oven, and I’d bake
+    these little treats for all her cats and dogs, and chase them through the hallways.
+    And father would light a cigarette and stand out in the tide,
+    and watch the sun go down, and listen to the waves come rolling in.
+    Because he didn’t like the songs that she would sing to him when it got late
+    and the house smelled like tobacco.
+
+    And they’d have buried Aunt Mildred if she hadn’t burned up
+    inside the house with all her animals and her crazy little knick knacks.
+    And the bones that they could find, they put inside a sealed box,
+    laid to rest in the foundation of the grand, marvelous tribute of a house
+    that our father built upon the ashes of the old family estate
+    that he had recently acquired.
+
+    Then came the day; I heard old Mildred singing sweetly by the water’s edge.
+    So I went outside to listen while the gas flowed freely from the oven I left on.
+    I watched the house go up, and I listened to our father screaming out
+    as Aunt Mildred smiled out the doorway of the old family estate
+    that I would soon come to acquire.
+---

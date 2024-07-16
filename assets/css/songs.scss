@@ -1,12 +1,20 @@
 ---
 ---
 
+@import "tabs";
+
 /*
     BASIC
 */
 
 // primary styles
 main {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    min-height: 100vh;
+    width: 100%;
+
     color: var(--text-color);
     
     .track-container {
@@ -14,9 +22,10 @@ main {
         justify-content: center;
         align-items: center;
         position: relative;
+        z-index: 1;
         width: 100%;
         height: 100vw;
-        padding: var(--spacing-3);
+        padding: var(--spacing-6);
         transition: flex var(--hover-transition);
 
         .art-bkg {
@@ -24,22 +33,22 @@ main {
             background-repeat: no-repeat;
             background-size: cover;
             position: absolute;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            left: 0;
+            top: -24px;
+            right: -24px;
+            bottom: -24px;
+            left: -24px;
             z-index: 0;
-            filter: blur(10px);
+            filter: blur(12px);
         }
 
         .track-interactive {
             display: flex;
             flex-direction: column;
-            gap: var(--spacing-2);
+            gap: var(--spacing-6);
             position: relative;
             z-index: 1;
             width: 100%;
-            max-width: 480px;
+            max-width: 320px;
 
             img {
                 display: block;
@@ -47,11 +56,43 @@ main {
                 border-radius: var(--border-radius-large);
                 box-shadow: var(--box-shadow-small);
             }
+
+            .track-interactive-label {
+                display: flex;
+                flex-direction: column;
+                gap: var(--spacing-2);
+
+                h1 {
+                    text-align: center;
+                }
+                a {
+                    text-align: center;
+                }
+            }
         }
     }
     .details-container {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-3);
+        flex: 1 0 auto;
+
+        background: var(--surface-bkg-color);
         padding: var(--spacing-3) var(--spacing-5);
         transition: flex var(--hover-transition);
+
+        position: relative;
+        z-index: 2;
+
+        header {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-1);
+        }
+
+        p.lyrics {
+            white-space: pre-wrap;
+        }
     }
 }
 
@@ -62,12 +103,18 @@ main {
 // narrow
 @media screen and (min-width: 768px) {
     main {
-        display: flex;
+        flex-direction: row;
 
         .track-container {
+            position: sticky;
+            top: 0;
             flex: 1 0 50%;
             height: 100vh;
             padding: var(--spacing-4);
+
+            .track-interactive {
+                max-width: 480px;
+            }
         }
         .details-container {
             flex: 1 0 50%;
@@ -77,10 +124,18 @@ main {
 
 // desktop
 @media screen and (min-width: 1024px) {
+    flex-direction: row;
+
     main {
         .track-container {
+            position: sticky;
+            top: 0;
             flex: 1 0 67%;
             padding: var(--spacing-6);
+
+            .track-interactive {
+                max-width: 480px;
+            }
         }
         .details-container {
             flex: 1 0 33%;

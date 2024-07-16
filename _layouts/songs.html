@@ -2,6 +2,54 @@
 <html lang="en">
     {% include meta-head.html %}
     <body>
-        {{ content }}
+        <main>
+            <div class="track-container">
+                <div class="art-bkg" style="background-image: url('/images/songs/{{page.short_name}}.png');"></div>
+                <div class="track-interactive">
+                    <img src="/images/songs/{{page.short_name}}.png" />
+                    <div class="track-interactive-label">
+                        <h1>{{ page.song_name }}</h1>
+                        <a href="https://open.spotify.com/track/{{ page.spotify_id }}">Listen!</a>
+                    </div>
+                </div>
+            </div>
+            <article class="details-container">
+                <header class="details-header">
+                    <h2>{{ page.song_name }}</h2>
+                    <h3>{{ page.song_tagline }}</h3>
+                    <a href="https://open.spotify.com/track/{{ page.spotify_id }}">Listen!</a>
+                </header>
+                <div class="tab-group">
+                    <button aria-selected="true" class="tab" id="tab-song" type="button" role="tab" tabindex="0">
+                        About the Song
+                    </button>
+                    <button class="tab" type="button" role="tab" id="tab-band" tabindex="0">
+                        About the Band
+                    </button>
+                </div>
+                <div
+                    aria-labelledby="tab-song"
+                    class="tab-panel selected"
+                    id="tab-song-panel"
+                    role="tabpanel"
+                >
+                    <h4>{{ page.song_name }}</h4>
+                    <p>{{ page.song_description }}</p>
+
+                    <h4>Lyrics</h4>
+                    <p class="lyrics">{{ page.lyrics }}</p>
+                </div>
+                <div
+                    aria-hidden="true"
+                    aria-labelledby="tab-band"
+                    class="tab-panel"
+                    id="tab-band-panel"
+                    role="tabpanel"
+                >
+                    <h4>The band!</h4>
+                    <p>Here's info about the band</p>
+                </div>
+            </article>
+        </main>
     </body>
 </html>

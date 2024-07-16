@@ -8,4 +8,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true" />
     <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
     {% if page.layout %}<link rel="stylesheet" href="/assets/css/{{ page.layout }}.css">{% endif %}
+
+    {% if page.components contains 'tabs' %}
+        <script src="/assets/js/components/tabs.js"></script>
+    {% endif %}
 </head>
