@@ -2,7 +2,7 @@
 layout: songs
 title: Template Song
 album: Name of Album
-components: ['tabs']
+album_link: https://open.spotify.com/album/15fRdFoEfLToMIHjgr3T9c
 short_name: template_song
 
 song_name: Template Song

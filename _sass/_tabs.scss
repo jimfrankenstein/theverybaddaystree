@@ -1,3 +1,14 @@
+/*
+<button class="tab" type="button" role="tab" id="tab-band" tabindex="0">
+    The Band
+</button>
+<div
+    aria-labelledby="tab-song"
+    class="tab-panel selected"
+    id="tab-song-panel"
+    role="tabpanel"
+></div>
+*/
 /* Group */
 .tab-group {
     display: flex;
@@ -13,7 +24,7 @@
       border: unset;
       color: var(--text-color-dim);
       display: inline-block;
-      font: var(--body-text-medium);
+      font: 400 16px/24px var(--body-text-typeface);
       padding: var(--spacing-2) var(--spacing-2) var(--spacing-2);
       cursor: pointer;
       margin: 0;
@@ -63,7 +74,6 @@
 
 .tab-panel {
   display: none;
-  padding: var(--spacing-3);
 
   &.selected {
     display: flex;

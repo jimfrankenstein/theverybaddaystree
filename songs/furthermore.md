@@ -2,6 +2,7 @@
 layout: songs
 title: Furthermore
 album: You Call This An Apocalypse?
+album_link: https://open.spotify.com/album/15fRdFoEfLToMIHjgr3T9c
 components: ['tabs']
 short_name: furthermore
 
@@ -13,6 +14,7 @@ song_description: Explore the philosophical depths of the liquor cabinet at your
 spotify_id: 7ivJF1JLWkHSOsOaq3KIwG
 
 lyrics: |-
+    #### Verse 1
     I was thinking the other day:
     Why do good men die? Why do criminals get away?
     Why do they nail down a coffin lid anyway?
@@ -23,6 +25,7 @@ lyrics: |-
     Why is there a French fry in my onion rings?
     Conspiracy.
 
+    #### Verse 2
     Do you think that if I told it,
     you would have the power to control it?
     You can’t have everything; how would you hold it?
@@ -32,6 +35,7 @@ lyrics: |-
     who builds robots so rebellious?
     No use hiding, they can smell us.
 
+    #### Verse 3
     Will the rains take our lives?
     When the flood waters come, will the wicked survives?
     Did Noah keep bees in his ark hives?

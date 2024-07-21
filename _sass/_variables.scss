@@ -27,28 +27,11 @@ Color
   --error-color: var(--red-core);
   --text-color: var(--black);
   --text-color-dim: var(--gray-7);
-  --link-color: var(--purple-core);
-  --link-color-hover: var(--purple-4);
-  --link-color-active: var(--purple-2);
-  --highlight-color: var(--purple-core);
-
-  /* Buttons */
-  --btn-color: var(--purple-core);
-  --btn-text-color: var(--white);
-  --btn-color-hover: var(--purple-7);
-  --btn-color-active: var(--purple-8);
-  --btn-color-focus: var(--purple-2);
-  --website-btn-color: var(--gray-9);
-  --website-btn-text-color: var(--white);
-  --website-btn-color-hover: var(--purple-8);
-  --website-btn-color-active: var(--purple-6);
-  --website-btn-color-focus: var(--purple-2);
-
-  /* Legacy */
-  /* remove when updated in postscript-frontend */
-  /* from variables to values below */
-  --field-text-color: var(--text-color);
-  --field-border-color: var(--border-color);
+  --text-color-extra-dim: var(--gray-6);
+  // --link-color: var(--band-purple);
+  // --link-color-hover: var(--purple-4);
+  // --link-color-active: var(--purple-2);
+  --highlight-color: var(--band-purple);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -62,22 +45,11 @@ Color
   --error-color: var(--red-core);
   --text-color: var(--white);
   --text-color-dim: var(--gray-3);
-  --link-color: var(--mint-core);
-  --link-color-hover: var(--mint-5);
-  --link-color-active: var(--mint-7);
-  --highlight-color: var(--mint-core);
-
-  /* Buttons */
-  --btn-color: var(--mint-core);
-  --btn-text-color: var(--black);
-  --btn-color-hover: var(--mint-2);
-  --btn-color-active: var(--mint-1);
-  --btn-color-focus: var(--mint-7);
-  --website-btn-color: var(--gray-1);
-  --website-btn-text-color: var(--black);
-  --website-btn-color-hover: var(--purple-2);
-  --website-btn-color-active: var(--purple-6);
-  --website-btn-color-focus: var(--purple-7);
+  --text-color-extra-dim: var(--gray-4);
+  // --link-color: var(--mint-core);
+  // --link-color-hover: var(--mint-5);
+  // --link-color-active: var(--mint-7);
+  --highlight-color: var(--band-green);
 }
 }
 
@@ -86,11 +58,10 @@ Typography
 ------------------------------------------------------- */
 :root {
   /* Font-family - try to use component first */
-  --heading-typeface: Inter, sans-serif;
-  --body-text-typeface: Inter, sans-serif;
+  --heading-typeface: "Syne", sans-serif;
+  --body-text-typeface: "Inter", sans-serif;
   --eyebrow-text-typeface: Inter, sans-serif;
-  --mono-typeface: SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono',
-    'Courier New', monospace;
+  --mono-typeface: SFMono-Regular, monospace;
 
   /* Font-weight - try to use font shorthand vars first */
   --heading-font-weight: 700;
@@ -174,30 +145,6 @@ Typography
 
   --eyebrow-text: var(--eyebrow-text-font-weight) var(--eyebrow-text-font-size) /
     var(--eyebrow-text-line-height) var(--eyebrow-text-typeface);
-}
-
-/* -------------------------------------------------------
-Box-shadow
-------------------------------------------------------- */
-:root {
-  --box-shadow-small: 1px 3px 9px -3px hsla(0, 0%, 0%, 6%),
-    -3px -4px 6px -6px hsla(0, 0%, 0%, 6%);
-  --box-shadow-medium: 2px 6px 12px -3px hsla(0, 0%, 0%, 8%),
-    -3px -4px 6px -6px hsla(0, 0%, 0%, 6%);
-  --box-shadow-large: 3px 12px 18px -6px hsla(0, 0%, 0%, 9%),
-    -3px -4px 6px -6px hsla(0, 0%, 0%, 6%);
-  --box-shadow-dropdown: var(--box-shadow-small);
-}
-
-@media (prefers-color-scheme: dark) {
-:root {
-  --box-shadow-small: 1px 12px 18px -6px hsla(256, 100%, 9%, 72%),
-    -3px -4px 6px -6px hsla(256, 100%, 9%, 72%);
-  --box-shadow-medium: 2px 18px 24px -6px hsla(256, 100%, 9%, 78%),
-    -3px -4px 6px -6px hsla(256, 100%, 9%, 72%);
-  --box-shadow-large: 3px 24px 40px -12px hsla(256, 100%, 9%, 84%),
-    -3px -4px 6px -6px hsla(256, 100%, 9%, 72%);
-}
 }
 
 /* -------------------------------------------------------

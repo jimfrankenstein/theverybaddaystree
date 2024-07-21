@@ -2,6 +2,7 @@
 layout: songs
 title: Unhappy Kathy
 album: You Call This An Apocalypse?
+album_link: https://open.spotify.com/album/15fRdFoEfLToMIHjgr3T9c
 components: ['tabs']
 short_name: unhappy-kathy
 
@@ -14,6 +15,7 @@ song_description: |-
 spotify_id: 12CkjnGyHDPX6zrw3HR3DW
 
 lyrics: |-
+    #### A-Section
     Broken-hearted, desperate hope,
     you sank to the sandy bottom of your despair.
     And there you'll wait for now.
@@ -22,6 +24,7 @@ lyrics: |-
     you're holding these joyful memories in your lungs.
     Alone as you close your eyes.
 
+    #### B-Section
     Unhappy Kathy,
     hold your breath and sink
     down down down to the bottom.
@@ -46,6 +49,7 @@ lyrics: |-
     that you’ll find comfort in the
     weight that lifts your heart and lets you go.
 
+    #### C-Section
     Unhappy Kathy, you have left us all behind
     to find the joy of being weightless. Being faithless,
     you have laughed into the void.
@@ -56,6 +60,7 @@ lyrics: |-
     You can't die any better than the ghost of the waters,
     Unhappy Kathy.
 
+    #### B-Section
     Unhappy Kathy,
     hold your breath and sink
     down down down to the bottom.

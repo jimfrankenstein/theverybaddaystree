@@ -2,6 +2,7 @@
 layout: songs
 title: Paint It Ugly
 album: You Call This An Apocalypse?
+album_link: https://open.spotify.com/album/15fRdFoEfLToMIHjgr3T9c
 components: ['tabs']
 short_name: paint-it-ugly
 
@@ -13,6 +14,7 @@ song_description: Do you feel like nothing? I know I do, I said I do.
 spotify_id: 779oQEsO9PL8SIERWgs3On
 
 lyrics: |-
+    #### Verse 1
     You paint it ugly to kiss it better
     A princess in a dirty sweater
     A foolish chump
@@ -21,6 +23,7 @@ lyrics: |-
     Put it in a letter, sealed with piss and vinegar
     Stamp hard upon my heart and let it go
 
+    #### Chorus
     There's no living larger than life
     because everyone is living a lie
     some die harder and some die young
@@ -29,6 +32,7 @@ lyrics: |-
     I don’t think anyone is listening in
     to the chaotic emaciated ugliness of feeling like nothing
 
+    #### Verse 2
     So paint it up ugly and put a pretty bow on it
     Cram-it down my throat for years and years
     Tell me that I'm wrong
@@ -36,6 +40,7 @@ lyrics: |-
     Tear me apart and prey it disappears
     All-so that my soul can let it go
 
+    #### Chorus
     There's no living larger than life
     because everyone is living a lie
     some die harder and some die young
@@ -44,6 +49,7 @@ lyrics: |-
     I don’t think anyone is listening in
     to the chaotic emaciated ugliness of feeling like nothing
 
+    #### Chorus
     There's no living larger than life
     because everyone is living a lie
     some die harder and some die young

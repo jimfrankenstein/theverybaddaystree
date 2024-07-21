@@ -6,49 +6,60 @@
             <div class="track-container">
                 <div class="art-bkg" style="background-image: url('/images/songs/{{page.short_name}}.png');"></div>
                 <div class="track-interactive">
-                    <img src="/images/songs/{{page.short_name}}.png" />
+                    <img class="track-art" src="/images/songs/{{page.short_name}}.png" />
                     <div class="track-interactive-label">
-                        <h1>{{ page.song_name }}</h1>
-                        <a href="https://open.spotify.com/track/{{ page.spotify_id }}">Listen!</a>
+                        <a href="https://open.spotify.com/track/{{ page.spotify_id }}">
+                            <img src="/images/spotify.png" alt="Spotify Logo" />
+                            <span>Listen on Spotify</span>
+                        </a>
                     </div>
                 </div>
             </div>
             <article class="details-container">
-                <header class="details-header">
-                    <h2>{{ page.song_name }}</h2>
-                    <h3>{{ page.song_tagline }}</h3>
-                    <a href="https://open.spotify.com/track/{{ page.spotify_id }}">Listen!</a>
+                <header>
+                    <img src="/images/square.jpg" alt="The Very Bad Days hunt the elusive Ghost Bruno" />
+                    <h2>THE VERY BAD DAYS</h2>
                 </header>
-                <div class="tab-group">
-                    <button aria-selected="true" class="tab" id="tab-song" type="button" role="tab" tabindex="0">
-                        About the Song
-                    </button>
-                    <button class="tab" type="button" role="tab" id="tab-band" tabindex="0">
-                        About the Band
-                    </button>
-                </div>
-                <div
-                    aria-labelledby="tab-song"
-                    class="tab-panel selected"
-                    id="tab-song-panel"
-                    role="tabpanel"
-                >
-                    <h4>{{ page.song_name }}</h4>
-                    <p>{{ page.song_description }}</p>
+                <article>
+                    <div class="detail-content-block">
+                        <h1>{{ page.song_name }}</h1>
+                        <p class="large">{{ page.song_description }}</p>
+                        {% if page.album && page.album_link %}
+                            <p class="subtext">From <a href="{{ page.album_link }}">{{ page.album }}</a></p>
+                        {% endif %}
+                    </div>
 
-                    <h4>Lyrics</h4>
-                    <p class="lyrics">{{ page.lyrics }}</p>
-                </div>
-                <div
-                    aria-hidden="true"
-                    aria-labelledby="tab-band"
-                    class="tab-panel"
-                    id="tab-band-panel"
-                    role="tabpanel"
-                >
-                    <h4>The band!</h4>
-                    <p>Here's info about the band</p>
-                </div>
+                    <div class="detail-content-block">
+                        <h3>LYRICS</h3>
+                        <div class="markdown-wrapper">{{ page.lyrics | markdownify }}</div>
+                    </div>
+
+                    <div class="detail-content-block">
+                        <h3>ABOUT THE BAND</h3>
+                        <p>Emerging from the scary basement of the Minneapolis music scene, The Very Bad Days are a devilishly funny B-horror flick of a band.</p>
+                        <ul>
+                            <li>Dark and danceable originals. Upbeat, bittersweet ballads. Grotesque puns and 90's covers.</li>
+                            <li>Minimalist, backbeat drumming. Melodic, punk jazz basslines. Powerful axe-chops and chilling solos.</li>
+                            <li>Fantastical grindhouse macabre, all tied up with the unexpected sweetness of alt-rock nostalgia.</li>
+                        </ul>    
+                        <p>These grim humor grunge rock Ghostbusters proudly capture a bizarre spirit all their own. On a terrible, horrible, no good, very bad day, you can catch the band haunting the bars, theaters, and curiosity shops of Minnesota.</p>
+                    </div>
+
+                    <footer class="detail-content-block">
+                        <p class="subtext">© The Very Bad Days, Brian Reed, Daniel Goodroad, Aric Bieganek
+                        <br />
+                        <br />
+                        Album produced by <a href="https://cloverleaf.audio" target="_blank">Cloverleaf Audio-Visual</a>, Saint Paul MN
+                        <br />
+                        Producer & Recording Engineer: Matt Ebso
+                        <br />
+                        Assistant Engineer: Maximiliano Frini
+                        <br />
+                        Mix Engineer: Jun Yang Ng
+                        <br />
+                        Mastering Engineer: Greg Reierson, Rareform Mastering</p>
+                    </footer>
+                </article>
             </article>
         </main>
     </body>
