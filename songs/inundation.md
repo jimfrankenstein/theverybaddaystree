@@ -7,9 +7,9 @@ components: ['tabs']
 short_name: inundation
 
 song_name: Inundation
-song_tagline: This song right here...
+song_tagline: in·un·da·tion / noun / an overwhelming abundance of people or things.
 
-song_description: This is a really really really great song.
+song_description: in·un·da·tion / noun / an overwhelming abundance of people or things.
 
 spotify_id: 2DBze5NuRAKIyn4zhFOGE1
 
