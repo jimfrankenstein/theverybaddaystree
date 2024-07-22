@@ -83,7 +83,8 @@ main {
                     border: 1px solid var(--gray-7);
                     border-radius: var(--border-radius-small);
                     transition: background-color var(--hover-transition);
-                    max-width: 480px;
+                    max-width: 360px;
+                    width: 100%;
 
                     img {
                         display: block;
