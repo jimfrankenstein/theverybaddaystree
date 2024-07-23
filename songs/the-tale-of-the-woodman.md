@@ -13,9 +13,6 @@ spotify_id: 3kTzpwkUjZZPgfN5ie0zqL
 
 lyrics: |-
     #### Intro
-    Submitted for the approval of the very bad society
-    We call this dreadful tale the legend of the Woodman
-    lyrics
     Submitted for the approval of The Very Bad Society,
     we call this dreadful story the Tale of the Woodman!
 
