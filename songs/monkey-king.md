@@ -44,4 +44,8 @@ lyrics: |-
     No one will remember you, but that’s the way we needed it to be.
     We’ll just be free and we’ll see that everyone’s alone and wants to feel
     connected to the world around them.
+
+song_credits: |-
+    Written and Recorded in Minneapolis by Daniel Goodroad + Jim Frankenstein
+    Mixed & Mastered by Anders Carlson
 ---

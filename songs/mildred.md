@@ -44,4 +44,8 @@ lyrics: |-
     I watched the house go up, and I listened to our father screaming out
     as Aunt Mildred smiled out the doorway of the old family estate
     that I would soon come to acquire.
+
+song_credits: |-
+    Written and Recorded in Minneapolis by Daniel Goodroad + Jim Frankenstein
+    Mixed & Mastered by Anders Carlson
 ---

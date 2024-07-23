@@ -62,4 +62,8 @@ lyrics: |-
     and it’s far more skeletons than we can explain.
     When your spirit is damned and aflame,
     come join the skeleton band!
+
+song_credits: |-
+    Written and Recorded in Minneapolis by Daniel Goodroad + Jim Frankenstein
+    Mixed & Mastered by Anders Carlson
 ---

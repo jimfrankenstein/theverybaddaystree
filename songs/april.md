@@ -68,4 +68,8 @@ lyrics: |-
     Sure, you spend your days in a laser cage, but you still get your stories done.
     April, keep your wits about you, tomorrow's a brand new day.
     New origins await you, in the city by the bay.
+
+song_credits: |-
+    Written and Recorded in Minneapolis by Daniel Goodroad + Jim Frankenstein
+    Mixed & Mastered by Anders Carlson
 ---

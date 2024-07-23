@@ -65,4 +65,9 @@ lyrics: |-
     In fire, the Woodman, he dies!
     Run, run children, run!
     It’s the Horrible Legend of Woodman!
+
+song_credits: |-
+    Produced by <a href="https://cloverleaf.audio" target="_blank">Cloverleaf Audio-Visual</a>, Saint Paul MN
+    Recording & Mix Engineer: Matt Ebso
+    Mastering Engineer: Greg Reierson
 ---

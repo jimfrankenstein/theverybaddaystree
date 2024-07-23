@@ -58,4 +58,8 @@ lyrics: |-
     toward the dying and the bored.
     Here’s to the demons we all live with every day
     and to the void.
+
+song_credits: |-
+    Written and Recorded in Minneapolis by Daniel Goodroad + Jim Frankenstein
+    Mixed & Mastered by Anders Carlson
 ---

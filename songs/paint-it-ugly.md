@@ -57,4 +57,11 @@ lyrics: |-
     There is no escape, you can stop all your praying
     I don’t think anyone is listening in
     to the chaotic emaciated ugliness of feeling like nothing
+
+song_credits: |-
+    Album produced by <a href="https://cloverleaf.audio" target="_blank">Cloverleaf Audio-Visual</a>, Saint Paul MN
+    Producer & Recording Engineer: Matt Ebso
+    Assistant Engineer: Maximiliano Frini
+    Mix Engineer: Jun Yang Ng
+    Mastering Engineer: Greg Reierson, Rareform Mastering
 ---

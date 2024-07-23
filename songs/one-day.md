@@ -58,4 +58,8 @@ lyrics: |-
     Cuz I'm waiting for someday to be today again.
     Begging for just one last kiss before the end.
     Before the Universe disintegrates, I just want to see one day with you, someday.
+
+song_credits: |-
+    Written and Recorded in Minneapolis by Daniel Goodroad + Jim Frankenstein
+    Mixed & Mastered by Anders Carlson
 ---

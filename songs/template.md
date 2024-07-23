@@ -15,4 +15,8 @@ spotify_id: 3kTzpwkUjZZPgfN5ie0zqL
 lyrics: |-
     Some lyrics
     Go here
+
+song_credits: |-
+    Song credits
+    Go here
 ---

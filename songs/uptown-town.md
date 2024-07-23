@@ -59,4 +59,11 @@ lyrics: |-
     you’re the girl I think I wanna drag into this
     cogent argument for a life.
     Porters, lagers, coffee ales.
+
+song_credits: |-
+    Album produced by <a href="https://cloverleaf.audio" target="_blank">Cloverleaf Audio-Visual</a>, Saint Paul MN
+    Producer & Recording Engineer: Matt Ebso
+    Assistant Engineer: Maximiliano Frini
+    Mix Engineer: Jun Yang Ng
+    Mastering Engineer: Greg Reierson, Rareform Mastering
 ---

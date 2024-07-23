@@ -55,4 +55,11 @@ lyrics: |-
     She won't last
     She didn't last
     I'll be stuck here forever: Inundation
+
+song_credits: |-
+    Album produced by <a href="https://cloverleaf.audio" target="_blank">Cloverleaf Audio-Visual</a>, Saint Paul MN
+    Producer & Recording Engineer: Matt Ebso
+    Assistant Engineer: Maximiliano Frini
+    Mix Engineer: Jun Yang Ng
+    Mastering Engineer: Greg Reierson, Rareform Mastering
 ---
