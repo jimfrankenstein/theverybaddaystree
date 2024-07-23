@@ -62,7 +62,6 @@
             <article class="details-container">
                 <header>
                     <img src="/images/square.jpg" alt="The Very Bad Days hunt the elusive Ghost Bruno" loading="lazy" />
-                    <!-- <h2>THE VERY BAD DAYS</h2> -->
                     <svg viewBox="0 0 252 50" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The Very Bad Days">
                         <path d="M0 0H31.2V5.7H19.35V19.2H11.85V5.7H0V0Z" fill="currentColor"/>
                         <path d="M41.6875 12.33V19.2H34.1875V0H41.6875V6.63H60.8875V0H68.3875V19.2H60.8875V12.33H41.6875Z" fill="currentColor"/>
@@ -96,6 +95,30 @@
 
                     <div class="detail-content-block">
                         <h2>ABOUT THE BAND</h2>
+                        <picture class="band-photo-picture" loading="lazy">
+                            <source srcset="/images/band/band-photo-1024.avif 1024w,
+                                            /images/band/band-photo-512.avif 512w,
+                                            /images/band/band-photo-256.avif 256w"
+                                    sizes="(max-width: 256px) 256px,
+                                        (max-width: 512px) 512px,
+                                        1024px"
+                                    type="image/avif">
+                            <source srcset="/images/band/band-photo-1024.webp 1024w,
+                                            /images/band/band-photo-512.webp 512w,
+                                            /images/band/band-photo-256.webp 256w"
+                                    sizes="(max-width: 256px) 256px,
+                                        (max-width: 512px) 512px,
+                                        1024px"
+                                    type="image/webp">
+                            <source srcset="/images/band/band-photo-1024.jpg 1024w,
+                                            /images/band/band-photo-512.jpg 512w,
+                                            /images/band/band-photo-256.jpg 256w"
+                                    sizes="(max-width: 256px) 256px,
+                                        (max-width: 512px) 512px,
+                                        1024px"
+                                    type="image/jpeg">
+                            <img class="band-photo-img" src="/images/band/band-photo-512.jpg" alt="The Very Bad Days hunt the elusive Ghost Bruno" loading="lazy" />
+                        </picture>
                         <p>Emerging from the scary basement of the Minneapolis music scene, The Very Bad Days are a devilishly funny B-horror flick of a band.</p>
                         <ul>
                             <li>Dark and danceable originals. Upbeat, bittersweet ballads. Grotesque puns and 90's covers.</li>

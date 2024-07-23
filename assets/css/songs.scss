@@ -1,8 +1,6 @@
 ---
 ---
 
-@import "tabs";
-
 /*
     BASIC
 */
@@ -162,6 +160,21 @@ main {
                     width: 100%;
                 }
             }
+        }
+
+        .band-photo-picture {
+            display: block;
+            margin: var(--spacing-4) auto;
+            width: 100%;
+            max-width: 512px;
+        }
+
+        .band-photo-img {
+            display: block;
+            width: 100%;
+            object-fit: contain;
+            border-radius: var(--border-radius-large);
+            max-width: 512px;
         }
 
         .detail-content-block {
