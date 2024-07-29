@@ -7,9 +7,7 @@ components: ['tabs']
 short_name: the-spirit-of-the-scapegoat
 
 song_name: The Spirit of the Scapegoat
-song_tagline: This song right here...
-
-song_description: This is a really really really great song.
+song_description: A haunting song about our personal demons, come to life.
 
 spotify_id: 0V3YE9SMpFeCTjatEbwWy1
 

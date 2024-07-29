@@ -7,9 +7,7 @@ components: ['tabs']
 short_name: one-day
 
 song_name: One Day
-song_tagline: This song right here...
-
-song_description: This is a really good song.
+song_description: All of these things... someday.
 
 spotify_id: 4M6MLtBNFhx82WVnP8Ltj5
 

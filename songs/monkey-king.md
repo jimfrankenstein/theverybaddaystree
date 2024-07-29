@@ -7,9 +7,7 @@ components: ['tabs']
 short_name: monkey-king
 
 song_name: Monkey King
-song_tagline: This song right here...
-
-song_description: This is a really really really great song.
+song_description: Hail, hail to the Monkey King!
 
 spotify_id: 09v8w7JAZdlqTsyjKTDgbN
 

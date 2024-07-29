@@ -5,8 +5,6 @@ components: ['tabs']
 short_name: the-tale-of-the-woodman
 
 song_name: The Tale of the Woodman
-song_tagline: This song right here...
-
 song_description: This horrible legend will echo for all time through the woods around Camp Woodman.
 
 spotify_id: 3kTzpwkUjZZPgfN5ie0zqL

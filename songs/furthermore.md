@@ -7,8 +7,6 @@ components: ['tabs']
 short_name: furthermore
 
 song_name: Furthermore
-song_tagline: This song right here...
-
 song_description: Explore the philosophical depths of the liquor cabinet at your grandma's house.
 
 spotify_id: 7ivJF1JLWkHSOsOaq3KIwG

@@ -7,8 +7,6 @@ components: ['tabs']
 short_name: uptown-town
 
 song_name: Uptown Town
-song_tagline: This song right here...
-
 song_description: A true Minnesota classic, right up there with Fievel Goes to the Soap Factory.
 
 spotify_id: 3lMj9aazpixvBDNlBBeMTV

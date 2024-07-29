@@ -7,8 +7,6 @@ components: ['tabs']
 short_name: unhappy-kathy
 
 song_name: Unhappy Kathy
-song_tagline: This song right here...
-
 song_description: |-
     The Very Bad Days present a bizarre eulogy for former Flipper star and actual dolphin Kathy, who held her breath until she died. After being abducted by humans and forced to perform on NBC, Kathy refused to remain in captivity, breaking our hearts and our notions of consciousness.
 

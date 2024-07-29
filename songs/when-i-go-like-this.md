@@ -7,8 +7,6 @@ components: ['tabs']
 short_name: when-i-go-like-this
 
 song_name: When I Go Like This
-song_tagline: This song right here...
-
 song_description: That's what I'm trying to say when I go like this.
 
 spotify_id: 24YdP9yzRyMCxvDVuEZvGg

@@ -7,9 +7,7 @@ components: ['tabs']
 short_name: april
 
 song_name: April
-song_tagline: This is a song about April
-
-song_description: This is a song about April, yo.
+song_description: A song dedicated to our collective first childhood crush.
 
 spotify_id: 1XYIPEImKDAN9kzzcYPhDC
 

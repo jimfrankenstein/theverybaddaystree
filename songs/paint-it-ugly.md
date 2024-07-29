@@ -7,8 +7,6 @@ components: ['tabs']
 short_name: paint-it-ugly
 
 song_name: Paint It Ugly
-song_tagline: This song right here...
-
 song_description: Do you feel like nothing? I know I do, I said I do.
 
 spotify_id: 779oQEsO9PL8SIERWgs3On

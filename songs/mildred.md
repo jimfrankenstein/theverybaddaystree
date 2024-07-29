@@ -7,9 +7,7 @@ components: ['tabs']
 short_name: mildred
 
 song_name: Mildred
-song_tagline: This song right here...
-
-song_description: This is a really really really great song.
+song_description: They’d have buried Aunt Mildred if she hadn’t burned up...
 
 spotify_id: 11gSEMITGe6vmhCqtT07LJ
 

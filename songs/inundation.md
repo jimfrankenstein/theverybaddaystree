@@ -7,8 +7,6 @@ components: ['tabs']
 short_name: inundation
 
 song_name: Inundation
-song_tagline: in·un·da·tion / noun / a flood, or the fact of being flooded with water
-
 song_description: in·un·da·tion / noun / a flood, or the fact of being flooded with water
 
 spotify_id: 2DBze5NuRAKIyn4zhFOGE1

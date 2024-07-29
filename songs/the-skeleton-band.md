@@ -7,9 +7,7 @@ components: ['tabs']
 short_name: the-skeleton-band
 
 song_name: The Skeleton Band
-song_tagline: This song right here...
-
-song_description: This is a really really really great song.
+song_description: Put a little soul in the skeleton band!
 
 spotify_id: 3owJus2hPYhmHIBQAdi667
 
