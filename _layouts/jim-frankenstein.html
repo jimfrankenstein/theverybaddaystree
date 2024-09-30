@@ -1,0 +1,91 @@
+{% assign img_path = "/images/jim-frankenstein/" | append: page.short_name %}
+<!DOCTYPE html>
+<html lang="en">
+    {% include meta-head.html %}
+    <body>
+        <style>
+            .art-bkg {
+                background-image: url('{{ img_path }}/track-art-256.jpg');
+            }
+    
+            @supports (background-image: url("{{ img_path }}/track-art-256.avif")) {
+                .art-bkg {
+                    background-image: url('{{ img_path }}/track-art-256.avif');
+                }
+            }
+    
+            @supports (background-image: url("{{ img_path }}/track-art-256.webp")) {
+                .art-bkg {
+                    background-image: url('{{ img_path }}/track-art-256.webp');
+                }
+            }
+        </style>
+        </style>
+        <main>
+            <div class="track-container">
+                <div class="art-bkg"></div>
+                <div class="track-interactive">
+                    <picture class="track-art-picture">
+                        <source srcset="{{ img_path }}/track-art-1024.avif 1024w,
+                                        {{ img_path }}/track-art-512.avif 512w,
+                                        {{ img_path }}/track-art-256.avif 256w"
+                                sizes="(max-width: 256px) 256px,
+                                    (max-width: 512px) 512px,
+                                    1024px"
+                                type="image/avif">
+                        <source srcset="{{ img_path }}/track-art-1024.webp 1024w,
+                                        {{ img_path }}/track-art-512.webp 512w,
+                                        {{ img_path }}/track-art-256.webp 256w"
+                                sizes="(max-width: 256px) 256px,
+                                    (max-width: 512px) 512px,
+                                    1024px"
+                                type="image/webp">
+                        <source srcset="{{ img_path }}/track-art-1024.jpg 1024w,
+                                        {{ img_path }}/track-art-512.jpg 512w,
+                                        {{ img_path }}/track-art-256.jpg 256w"
+                                sizes="(max-width: 256px) 256px,
+                                    (max-width: 512px) 512px,
+                                    1024px"
+                                type="image/jpeg">
+                        <img class="track-art-img" src="{{ img_path }}/track-art-512.jpg"
+                            alt="Track art for {{ page.title }}" />
+                    </picture>
+
+                    <div class="track-interactive-label">
+                        <a href="spotify://track/{{ page.spotify_id }}?context=spotify:playlist:5uhuvVfRzb632ZgZKDL0pz&amp;si=d0ff2ce8b68b403a" onclick="fbq('trackCustom', 'LinkClickToSpotify');">
+                            <img src="/images/spotify.png" alt="Spotify Logo" />
+                            <span>Listen on Spotify</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <article class="details-container">
+                <header>
+                    <!-- <img src="/images/square.jpg" alt="Jim Frankenstein is People!" loading="lazy" /> -->
+                </header>
+                <article>
+                    <div class="detail-content-block">
+                        <h1>{{ page.song_name }}</h1>
+                        <p class="large">{{ page.song_description }}</p>
+                        {% if page.album and page.album_link %}
+                            <p class="subtext">From <a href="{{ page.album_link }}">{{ page.album }}</a></p>
+                        {% endif %}
+                    </div>
+
+                    <div class="detail-content-block">
+                        <h2>LYRICS</h2>
+                        <div class="markdown-wrapper">{{ page.lyrics | markdownify }}</div>
+                    </div>
+
+                    <footer class="detail-content-block">
+                        <p class="subtext">© Jim Frankenstein
+                        <br />
+                        <br />
+                        {{ page.song_credits | newline_to_br }}
+                        </p>
+                    </footer>
+                </article>
+            </article>
+        </main>
+    </body>
+</html>
