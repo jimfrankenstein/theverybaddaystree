@@ -6,7 +6,7 @@ short_name: the-book-of-woodman
 song_name: The Book of Woodman
 song_description: In the thrilling sequel to the campfire classic, Woodman hatches a terrifying new plan to stalk his victims -- starting his own religion!
 
-spotify_id: 0utlnVjK8emVZzxheZNQnD
+spotify_id: 1E85YWanHkWl1Htz20wWbl
 
 lyrics: |-
     #### Verse 1

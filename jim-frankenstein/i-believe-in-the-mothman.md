@@ -7,7 +7,7 @@ short_name: i-believe-in-the-mothman
 song_name: I Believe in the Mothman
 song_description: You ever feel like someone's watching you from the dark? Yeah, that’s Mothman—those red eyes, man, they don’t just see you... they know you.
 
-spotify_id: 1rPkM0aYpe2TnMy0rLaUnv
+spotify_id: 1JLoFwmDIxGc0qNrt76s1c
 
 lyrics: |-
     #### Verse 1
