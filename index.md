@@ -6,14 +6,14 @@ title: Grim humor grunge rock Ghostbusters • Minneapolis, MN
     <div data-id="355317540" class="sc-bdfBwQ pkAuV">
         <div id="355317540" class="sc-bdfBwQ sc-kIeTtH jAmcnV cnxSGb"></div>
         <div data-testid="StyledContainer" class="sc-bdfBwQ sc-dmlrTW eua-dhZ kGoTFc group"
-            type="CLASSIC"><a href="spotify://track/0utlnVjK8emVZzxheZNQnD?context=spotify:playlist:5uhuvVfRzb632ZgZKDL0pz&si=d0ff2ce8b68b403a" target="_blank"
+            type="CLASSIC"><a href="spotify://track/3kTzpwkUjZZPgfN5ie0zqL?context=spotify:playlist:5uhuvVfRzb632ZgZKDL0pz&si=71e2b64de9ee4469" target="_blank"
                 rel="noopener" data-testid="LinkButton"
                 class="sc-pFZIQ sc-hHftDr ldGKnQ fhtMSy group"
                 aria-describedby="profile-the-very-bad-days " height="auto">
                 <div class="w-full h-full">
                     <div data-testid="LinkThumbnail"
                         class="sc-bdfBwQ sc-gsTCUz sc-bkzZxe dgVnpq bhdLno CvSZl"></div>
-                    <p class="sc-hKgILt sc-jUEnpm gXKGT fmxDzY">New Track! The Tale of the Woodman 2: The Book of Woodman</p>
+                    <p class="sc-hKgILt sc-jUEnpm gXKGT fmxDzY">Find our newest tunes at the top of this playlist</p>
                 </div>
             </a></div>
     </div>
