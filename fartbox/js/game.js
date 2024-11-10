@@ -36,15 +36,22 @@ function preload() {
 function create() {
     const gameWidth = this.sys.game.config.width;
     const gameHeight = this.sys.game.config.height;
+    
+    this.gameTime = 0; // Tracks the time in seconds
+    this.winTime = 223; // Winning time in seconds (3:43)
+
+    this.targetSpeed = 400;
 
     const background = this.add.image(0, 0, 'background').setOrigin(0.5, 0.5);
     const scale = Math.max(gameWidth / background.width, gameHeight / background.height);
     background.setScale(scale).setScrollFactor(0);
     background.setPosition(gameWidth / 2, gameHeight / 2);
+    background.setDepth(1);
 
     this.player = this.physics.add.sprite(gameWidth / 2, gameHeight / 2, 'player');
     this.player.setDisplaySize(50, 50);
     this.player.setCollideWorldBounds(true);
+    this.player.setDepth(1);
 
     this.cursors = this.input.keyboard.createCursorKeys();
     this.spacebar = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
@@ -52,46 +59,79 @@ function create() {
     this.campersSpawned = 0;
     this.items = this.physics.add.group();
     this.camperCounter = 1;
-    this.initialDelay = 3000;
+    this.initialDelay = 2800;
     this.currentDelay = this.initialDelay;
-    this.minDelay = 75;
+    this.minDelay = 50;
+    this.score = 0;
+
+
 
     // Margin and vertical spacing for stacked text
     const margin = 20;
     let textY = margin;
 
-    // Score Text
-    this.score = 0;
-    this.scoreText = this.add.text(margin, textY, 'Score: 0', { fontSize: '24px', fill: '#fff' });
-    textY += this.scoreText.height + margin;
+    // Add Instructions Text (Above Start Game Button)
+    this.titleText = this.add.text(gameWidth / 2, 60, 
+        'Woodman: The Game', {
+        fontSize: '30px',
+        fontWeight: 'bold',
+        fill: '#e31c1c',
+        align: 'center',
+        stroke: '#000000',  // Add black outline
+        strokeThickness: 10 // Adjust the thickness of the outline
+    }).setOrigin(0.5).setDepth(10);
 
-    // Pause Button
-    this.pauseButton = this.add.text(margin, textY, 'Pause Game', { fontSize: '24px', fill: '#fff' })
+    // Add Instructions Text (Above Start Game Button)
+    this.instructionsText = this.add.text(gameWidth / 2, this.titleText.y + this.titleText.height + 80, 
+        'Drag Woodman around (or use your arrow keys) to help him kill the unsuspecting campers!\n' +
+        'If camp attendance reaches 100 campers, Woodman dies horribly!', {
+        fontSize: '24px',
+        fill: '#ffffff',
+        wordWrap: { width: gameWidth - 40, useAdvancedWrap: true },
+        align: 'center',
+        stroke: '#000000',  // Add black outline
+        strokeThickness: 10 // Adjust the thickness of the outline
+    }).setOrigin(0.5).setDepth(10);
+    
+    // Hide score, pause, attendance, and progress bar initially
+
+    this.pauseButton = this.add.text(gameWidth - margin - 200, textY, 'Pause Game', { fontSize: '24px', fill: '#fff',
+        backgroundColor: '#000000',
+        padding: { x: 20, y: 10 } })
         .setInteractive()
-        .on('pointerdown', () => togglePause.call(this));
-    textY += this.pauseButton.height + margin;
+        .on('pointerdown', () => togglePause.call(this))
+        .setVisible(false).setDepth(10); // Hidden initially
 
-    // Camp Attendance Label above Progress Bar
-    this.attendanceText = this.add.text(margin, textY, `Camp Attendance: 0`, { fontSize: '24px', fill: '#fff' });
+    this.scoreText = this.add.text(margin, textY, 'Score: 0', { fontSize: '24px', fill: '#fff' }).setVisible(false).setDepth(10);
+
+    textY += this.scoreText.height + margin;
+    
+    this.timeText = this.add.text(margin, textY, `Time Left: ${this.winTime - this.gameTime}`, { fontSize: '24px', fill: '#fff' }).setVisible(false).setDepth(10);
+
+    textY += this.timeText.height + margin + 20;
+
+    this.attendanceText = this.add.text(margin, textY, `Camp Attendance: 0`, { fontSize: '24px', fill: '#fff' })
+        .setVisible(false).setDepth(10); // Hidden initially
     textY += this.attendanceText.height + margin;
 
-    // Progress Bar Setup
-    const barYPosition = textY;  // Align both bars at the same Y-coordinate
+    this.barYPosition = textY;  // Align both bars at the same Y-coordinate
 
     this.progressBarBackground = this.add.graphics();
     this.progressBarBackground.fillStyle(0x808080, 1);
-    this.progressBarBackground.fillRect(margin, barYPosition, 200, 20); // Background for the bar
+    this.progressBarBackground.fillRect(margin, this.barYPosition, 200, 20); // Background for the bar
 
     this.progressBar = this.add.graphics(); // Foreground that fills up
     updateProgressBar.call(this); // Initialize the progress bar
+    this.progressBar.setDepth(10).setVisible(false); // Hidden initially
+    this.progressBarBackground.setDepth(10).setVisible(false); // Hidden initially
 
     // Start Button (centered and larger)
-    const startButton = this.add.text(gameWidth / 2, gameHeight / 2, 'Start Game', {
+    const startButton = this.add.text(gameWidth / 2, this.instructionsText.y + this.instructionsText.height + 20, 'Start Game', {
         fontSize: '48px',
         fill: '#ffffff',
         backgroundColor: '#000000',
         padding: { x: 20, y: 10 }
-    }).setOrigin(0.5).setInteractive();
+    }).setOrigin(0.5).setInteractive().setDepth(10);
 
     startButton.on('pointerdown', () => {
         if (!this.gameStarted) {
@@ -100,6 +140,14 @@ function create() {
             this.music.play({ loop: true });
             this.isMusicPlaying = true;
             startButton.destroy();
+
+            // Show UI elements when the game starts
+            this.scoreText.setVisible(true);
+            this.timeText.setVisible(true);
+            this.pauseButton.setVisible(true);
+            this.attendanceText.setVisible(true);
+            this.progressBar.setVisible(true);
+            this.progressBarBackground.setVisible(true);
         }
     });
 
@@ -126,14 +174,26 @@ function update() {
 
     if (!this.gameStarted || this.gamePaused) return;
 
-    const targetSpeed = 400;
+    // Update game time
+    this.gameTime += this.sys.game.loop.delta / 1000; // Increment time in seconds
+
+    const timeLeft = Math.round(this.winTime - this.gameTime);
+    const secondsText = timeLeft === 1 ? 'second' : 'seconds';
+    this.timeText.setText(`Time Left: ${timeLeft} ${secondsText}`);
+
+    // Check if player has reached win time
+    if (this.gameTime >= this.winTime && !this.won) {
+        this.won = true; // Set win flag to prevent repeated triggers
+        winGame.call(this); // Trigger winning state
+        return; // Stop further updates
+    }
 
     // Move player to target position if touch input was registered
     if (this.targetX !== undefined && this.targetY !== undefined) {
         const distance = Phaser.Math.Distance.Between(this.player.x, this.player.y, this.targetX, this.targetY);
 
         // Move player toward the target position
-        this.physics.moveTo(this.player, this.targetX, this.targetY, targetSpeed);
+        this.physics.moveTo(this.player, this.targetX, this.targetY, this.targetSpeed);
 
         // Stop player when close enough to target
         if (distance < 10) {
@@ -144,17 +204,17 @@ function update() {
     } else {
         // Desktop keyboard controls if no touch input is active
         if (this.cursors.left.isDown) {
-            this.player.setVelocityX(-targetSpeed);
+            this.player.setVelocityX(-this.targetSpeed);
         } else if (this.cursors.right.isDown) {
-            this.player.setVelocityX(targetSpeed);
+            this.player.setVelocityX(this.targetSpeed);
         } else {
             this.player.setVelocityX(0);
         }
 
         if (this.cursors.up.isDown) {
-            this.player.setVelocityY(-targetSpeed);
+            this.player.setVelocityY(-this.targetSpeed);
         } else if (this.cursors.down.isDown) {
-            this.player.setVelocityY(targetSpeed);
+            this.player.setVelocityY(this.targetSpeed);
         } else {
             this.player.setVelocityY(0);
         }
@@ -163,7 +223,8 @@ function update() {
 
 function startGame() {
     // Core logic to start the game, excluding any reference to startButton
-    this.startText?.setVisible(false);  // Only hide start text if it's defined
+    this.titleText?.setVisible(false);  // Only hide start text if it's defined
+    this.instructionsText?.setVisible(false);  // Only hide start text if it's defined
 
     restartSpawnTimer.call(this);
 
@@ -211,7 +272,7 @@ function restartSpawnTimer() {
             spawnCamper.call(this);
 
             const elapsedTime = this.time.now / 1000;  // Time in seconds
-            if (elapsedTime >= 18) {
+            if (elapsedTime >= 20) {
                 this.currentDelay = Math.max(this.currentDelay - 100, this.minDelay);  // Faster reduction after 18 seconds
             } else {
                 this.currentDelay = Math.max(this.currentDelay - 50, this.minDelay);
@@ -254,7 +315,7 @@ function updateProgressBar() {
 
     this.progressBar.clear();
     this.progressBar.fillStyle(color, 1); // Set the fill color
-    this.progressBar.fillRect(20, 154, barWidth, 20);
+    this.progressBar.fillRect(20, this.barYPosition, barWidth, 20);
 }
 
 function spawnCamper() {
@@ -265,6 +326,7 @@ function spawnCamper() {
     const camper = this.items.create(x, y, camperKey);
     camper.setDisplaySize(50, 50);
     camper.setVelocity(Phaser.Math.Between(-100, 100), Phaser.Math.Between(-100, 100));
+    camper.setDepth(1);
     camper.setCollideWorldBounds(true);
     camper.setBounce(1);
 
@@ -282,7 +344,7 @@ function killCamper(player, camper) {
     this.campersSpawned = Math.max(this.campersSpawned - 1, 0);
     updateProgressBar.call(this);
 
-    this.score += 20;
+    this.score += 1;
     this.scoreText.setText('Score: ' + this.score);
 
     this.currentDelay = Math.max(this.currentDelay - 100, this.minDelay);
@@ -310,6 +372,7 @@ function gameOver() {
     const gameHeight = this.sys.game.config.height;
 
     const blackBackground = this.add.graphics();
+    blackBackground.setDepth(10);
     blackBackground.fillStyle(0x000000, 0.8); // Black color with opacity (0.8)
     blackBackground.fillRect(0, 0, gameWidth, gameHeight); // Full-screen rectangle
 
@@ -322,25 +385,73 @@ function gameOver() {
     this.progressBarBackground.setVisible(false);
     this.progressBar.setVisible(false);
 
-    // Show game over text
-    this.add.text(gameWidth / 2, gameHeight / 2, 'Game Over!', {
-        fontSize: '64px',
-        fill: '#ff0000'
-    }).setOrigin(0.5);
-
-    // Show instructions to restart
-    this.add.text(gameWidth / 2, gameHeight / 2 + 80, 'Reload to try again', {
+    // Death Text
+    this.deathText = this.add.text(gameWidth / 2, 250, 
+        `It only took ${this.score} children to destroy the Woodman!`, {
         fontSize: '24px',
-        fill: '#ffffff'
-    }).setOrigin(0.5);
+        fill: '#ffffff',
+        wordWrap: { width: gameWidth - 40, useAdvancedWrap: true },
+        align: 'center',
+        stroke: '#000000',  // Add black outline
+        strokeThickness: 10 // Adjust the thickness of the outline
+    }).setOrigin(0.5).setDepth(10);
 
     // Add a restart button
-    const restartButton = this.add.text(gameWidth / 2, gameHeight / 2 + 160, 'Restart Game', {
+    const restartButton = this.add.text(gameWidth / 2, this.deathText.y + this.deathText.height + 20, 'Try Again', {
         fontSize: '48px',
         fill: '#ffffff',
         backgroundColor: '#000000',
         padding: { x: 20, y: 10 }
-    }).setOrigin(0.5).setInteractive();
+    }).setOrigin(0.5).setInteractive().setDepth(10);
+
+    restartButton.on('pointerdown', () => {
+        // Reload the game
+        location.reload();
+    });
+}
+
+function winGame() {
+    this.gamePaused = true;
+
+    this.items.getChildren().forEach(camper => camper.setVelocity(0, 0));
+    this.time.removeAllEvents();
+
+    // Create a black background rectangle to cover the entire screen
+    const gameWidth = this.sys.game.config.width;
+    const gameHeight = this.sys.game.config.height;
+
+    const blackBackground = this.add.graphics();
+    blackBackground.setDepth(10);
+    blackBackground.fillStyle(0xFFFFFF, 0.8); // Black color with opacity (0.8)
+    blackBackground.fillRect(0, 0, gameWidth, gameHeight); // Full-screen rectangle
+
+    // Hide all game objects except for the text
+    this.player.setVisible(false);
+    this.items.getChildren().forEach(camper => camper.setVisible(false));
+    this.scoreText.setVisible(false);
+    this.pauseButton.setVisible(false);
+    this.attendanceText.setVisible(false);
+    this.progressBarBackground.setVisible(false);
+    this.progressBar.setVisible(false);
+
+    // Winning Text
+    this.winningText = this.add.text(gameWidth / 2, 250, 
+        `You killed ${this.score} children. You win, you monster!`, {
+        fontSize: '24px',
+        fill: '#ffffff',
+        wordWrap: { width: gameWidth - 40, useAdvancedWrap: true },
+        align: 'center',
+        stroke: '#000000',  // Add black outline
+        strokeThickness: 10 // Adjust the thickness of the outline
+    }).setOrigin(0.5).setDepth(10);
+
+    // Add a restart button
+    const restartButton = this.add.text(gameWidth / 2, this.winningText.y + this.winningText.height + 20, 'Play Again', {
+        fontSize: '48px',
+        fill: '#ffffff',
+        backgroundColor: '#000000',
+        padding: { x: 20, y: 10 }
+    }).setOrigin(0.5).setInteractive().setDepth(10);
 
     restartButton.on('pointerdown', () => {
         // Reload the game
