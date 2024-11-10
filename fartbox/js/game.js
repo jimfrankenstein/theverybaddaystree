@@ -221,7 +221,17 @@ function restartSpawnTimer() {
             return;
         } else {
             spawnCamper.call(this);
-            this.currentDelay = Math.max(this.currentDelay - 50, this.minDelay);
+
+            // Check the elapsed time and adjust the delay reduction accordingly
+            const elapsedTime = this.time.now / 1000;  // Time in seconds
+
+            if (elapsedTime >= 15) {
+                // Dramatically increase spawn rate after 18 seconds
+                this.currentDelay = Math.max(this.currentDelay - 100, this.minDelay);  // Faster reduction
+            } else {
+                // Regular reduction before 18 seconds
+                this.currentDelay = Math.max(this.currentDelay - 50, this.minDelay);
+            }
 
             const difficultyPercent = Math.floor(100 * (1 - this.currentDelay / this.initialDelay));
             this.difficultyText.setText(`Difficulty: ${difficultyPercent}%`);
