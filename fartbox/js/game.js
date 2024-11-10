@@ -24,7 +24,6 @@ window.addEventListener('resize', () => {
 });
 
 function preload() {
-    // Load assets with updated filenames
     this.load.image('background', 'assets/images/background.png');
     this.load.image('player', 'assets/images/woodman.png');
     this.load.image('camper1', 'assets/images/camper-1.png');
@@ -70,16 +69,15 @@ function create() {
     this.cursors = this.input.keyboard.createCursorKeys();
     this.spacebar = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
 
-    const totalItems = 100;
     this.campersSpawned = 0;
     this.items = this.physics.add.group();
     this.camperCounter = 1;
-    this.initialDelay = 2000;
+    this.initialDelay = 3000;
     this.currentDelay = this.initialDelay;
-    const minDelay = 0;
+    this.minDelay = 75;
 
     this.difficultyText = this.add.text(gameWidth - 300, gameHeight - 100, `Difficulty: 0%`, { fontSize: '24px', fill: '#fff' });
-    this.difficultySpeedText = this.add.text(gameWidth - 300, gameHeight - 60, `Speed: ${this.currentDelay} ms`, { fontSize: '24px', fill: '#fff' });
+    this.difficultySpeedText = this.add.text(gameWidth - 300, gameHeight - 60, `Camp Popularity: ${this.currentDelay} ms`, { fontSize: '24px', fill: '#fff' });
     this.camperText = this.add.text(gameWidth - 300, gameHeight - 30, `Campers: ${this.campersSpawned}`, { fontSize: '24px', fill: '#fff' });
 
     this.score = 0;
@@ -107,31 +105,29 @@ function create() {
 
 function update() {
     if (Phaser.Input.Keyboard.JustDown(this.spacebar)) {
-        togglePause.call(this); // Trigger pause with spacebar
+        togglePause.call(this);
     }
 
     if (!this.gameStarted) {
         if (this.cursors.left.isDown || this.cursors.right.isDown || this.cursors.up.isDown || this.cursors.down.isDown) {
-            startGame.call(this); // Start the game on first arrow key press
+            startGame.call(this);
         }
         return;
     }
 
-    if (this.gamePaused) return; // Stop updates if the game is paused
+    if (this.gamePaused) return;
 
-    // Easing parameters
-    const targetSpeed = 320;       // Maximum speed
-    const acceleration = 50;       // High acceleration for responsiveness
-    const decelerationFactor = 0.7; // Lower factor for a quicker stop
+    const targetSpeed = 320;
+    const acceleration = 50;
+    const decelerationFactor = 0.7;
 
-    // Apply easing to movement
     if (this.cursors.left.isDown) {
         this.player.setVelocityX(Phaser.Math.Clamp(this.player.body.velocity.x - acceleration, -targetSpeed, 0));
     } else if (this.cursors.right.isDown) {
         this.player.setVelocityX(Phaser.Math.Clamp(this.player.body.velocity.x + acceleration, 0, targetSpeed));
     } else {
         this.player.setVelocityX(this.player.body.velocity.x * decelerationFactor);
-        if (Math.abs(this.player.body.velocity.x) < 5) this.player.setVelocityX(0); // Snap to zero when nearly stopped
+        if (Math.abs(this.player.body.velocity.x) < 5) this.player.setVelocityX(0);
     }
 
     if (this.cursors.up.isDown) {
@@ -140,7 +136,7 @@ function update() {
         this.player.setVelocityY(Phaser.Math.Clamp(this.player.body.velocity.y + acceleration, 0, targetSpeed));
     } else {
         this.player.setVelocityY(this.player.body.velocity.y * decelerationFactor);
-        if (Math.abs(this.player.body.velocity.y) < 5) this.player.setVelocityY(0); // Snap to zero when nearly stopped
+        if (Math.abs(this.player.body.velocity.y) < 5) this.player.setVelocityY(0);
     }
 }
 
@@ -194,11 +190,11 @@ function restartSpawnTimer() {
             return;
         } else {
             spawnCamper.call(this);
-            this.currentDelay = Math.max(this.currentDelay - 50, 0);
+            this.currentDelay = Math.max(this.currentDelay - 50, this.minDelay);
 
-            const difficultyPercent = Math.floor(100 * (1 - this.currentDelay / this.initialDelay));
+            const difficultyPercent = Math.floor(100 * ((this.initialDelay - this.currentDelay) / (this.initialDelay - this.minDelay)));
             this.difficultyText.setText(`Difficulty: ${difficultyPercent}%`);
-            this.difficultySpeedText.setText(`Speed: ${this.currentDelay} ms`);
+            this.difficultySpeedText.setText(`Camp Popularity: ${this.currentDelay} ms`);
 
             this.time.addEvent({
                 delay: this.currentDelay,
@@ -230,18 +226,17 @@ function killCamper(player, camper) {
     camper.disableBody(true, true);
     this.campersSpawned--;
     this.camperText.setText(`Campers: ${this.campersSpawned}`);
-    this.score += 10;
+    this.score += 20;
     this.scoreText.setText('Score: ' + this.score);
 
-    this.currentDelay = Math.max(this.currentDelay - 2, 0);
+    this.currentDelay = Math.max(this.currentDelay - 100, this.minDelay);
 
-    const difficultyPercent = Math.floor(100 * (1 - this.currentDelay / this.initialDelay));
+    const difficultyPercent = Math.floor(100 * ((this.initialDelay - this.currentDelay) / (this.initialDelay - this.minDelay)));
     this.difficultyText.setText(`Difficulty: ${difficultyPercent}%`);
-    this.difficultySpeedText.setText(`Speed: ${this.currentDelay} ms`);
+    this.difficultySpeedText.setText(`Camp Popularity: ${this.currentDelay} ms`);
 }
 
 function gameOver() {
-    console.debug('lost');
     this.gamePaused = true;
 
     this.items.getChildren().forEach(camper => camper.setVelocity(0, 0));
