@@ -126,28 +126,13 @@ function create() {
     });
 }
 
-function startGame() {
-    // Core logic to start the game, excluding any reference to startButton
-    this.startText?.setVisible(false);  // Only hide start text if it's defined
-
-    restartSpawnTimer.call(this);
-
-    for (let i = 0; i < 8; i++) {
-        spawnCamper.call(this);
-    }
-}
-
-
 function update() {
-    if (!this.gameStarted) {
-        // Start the game if an arrow key is pressed
-        if (this.cursors.left.isDown || this.cursors.right.isDown || this.cursors.up.isDown || this.cursors.down.isDown) {
-            startGame.call(this);
-        }
-        return;
+    if (Phaser.Input.Keyboard.JustDown(this.spacebar)) {
+        togglePause.call(this);  // Ensure togglePause is called when spacebar is pressed
+        return;  // Exit if pause is toggled to prevent further updates
     }
 
-    if (this.gamePaused) return;
+    if (!this.gameStarted || this.gamePaused) return;
 
     const targetSpeed = 400;
 
@@ -181,6 +166,17 @@ function update() {
         } else {
             this.player.setVelocityY(0);
         }
+    }
+}
+
+function startGame() {
+    // Core logic to start the game, excluding any reference to startButton
+    this.startText?.setVisible(false);  // Only hide start text if it's defined
+
+    restartSpawnTimer.call(this);
+
+    for (let i = 0; i < 8; i++) {
+        spawnCamper.call(this);
     }
 }
 
@@ -222,14 +218,10 @@ function restartSpawnTimer() {
         } else {
             spawnCamper.call(this);
 
-            // Check the elapsed time and adjust the delay reduction accordingly
             const elapsedTime = this.time.now / 1000;  // Time in seconds
-
-            if (elapsedTime >= 15) {
-                // Dramatically increase spawn rate after 18 seconds
-                this.currentDelay = Math.max(this.currentDelay - 100, this.minDelay);  // Faster reduction
+            if (elapsedTime >= 18) {
+                this.currentDelay = Math.max(this.currentDelay - 100, this.minDelay);  // Faster reduction after 18 seconds
             } else {
-                // Regular reduction before 18 seconds
                 this.currentDelay = Math.max(this.currentDelay - 50, this.minDelay);
             }
 
