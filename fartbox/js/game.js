@@ -33,26 +33,6 @@ function preload() {
     this.load.audio('music', 'assets/audio/music.mp3');
 }
 
-function spawnCamper() {
-    const camperKey = `camper${this.camperCounter}`;
-    const x = Phaser.Math.Between(100, this.sys.game.config.width - 100);
-    const y = Phaser.Math.Between(100, this.sys.game.config.height - 100);
-
-    const camper = this.items.create(x, y, camperKey);
-    camper.setDisplaySize(50, 50);
-    camper.setVelocity(Phaser.Math.Between(-100, 100), Phaser.Math.Between(-100, 100));
-    camper.setCollideWorldBounds(true);
-    camper.setBounce(1);
-
-    this.campersSpawned++;
-    this.camperText.setText(`Campers: ${this.campersSpawned}`);
-
-    this.camperCounter++;
-    if (this.camperCounter > 4) {
-        this.camperCounter = 1;
-    }
-}
-
 function create() {
     const gameWidth = this.sys.game.config.width;
     const gameHeight = this.sys.game.config.height;
@@ -76,29 +56,36 @@ function create() {
     this.currentDelay = this.initialDelay;
     this.minDelay = 75;
 
-    this.difficultyText = this.add.text(gameWidth - 300, gameHeight - 100, `Difficulty: 0%`, { fontSize: '24px', fill: '#fff' });
-    this.difficultySpeedText = this.add.text(gameWidth - 300, gameHeight - 60, `Camp Popularity: ${this.currentDelay} ms`, { fontSize: '24px', fill: '#fff' });
-    this.camperText = this.add.text(gameWidth - 300, gameHeight - 30, `Campers: ${this.campersSpawned}`, { fontSize: '24px', fill: '#fff' });
+    // Margin and vertical spacing for stacked text
+    const margin = 20;
+    let textY = margin;
 
+    // Score Text
     this.score = 0;
-    this.scoreText = this.add.text(16, 16, 'Score: 0', { fontSize: '32px', fill: '#fff' });
-    this.music = this.sound.add('music');
-    this.isMusicPlaying = false;
-    this.gamePaused = false;
+    this.scoreText = this.add.text(margin, textY, 'Score: 0', { fontSize: '24px', fill: '#fff' });
+    textY += this.scoreText.height + margin;
 
-    this.musicButton = this.add.text(16, 50, 'Pause Music', { fontSize: '24px', fill: '#fff' })
-        .setInteractive()
-        .on('pointerdown', () => toggleMusic.call(this));
-
-    this.pauseButton = this.add.text(16, 90, 'Pause Game', { fontSize: '24px', fill: '#fff' })
+    // Pause Button
+    this.pauseButton = this.add.text(margin, textY, 'Pause Game', { fontSize: '24px', fill: '#fff' })
         .setInteractive()
         .on('pointerdown', () => togglePause.call(this));
+    textY += this.pauseButton.height + margin;
 
-    this.physics.add.overlap(this.player, this.items, killCamper, null, this);
+    // Camp Attendance Label above Progress Bar
+    this.attendanceText = this.add.text(margin, textY, `Camp Attendance: 0`, { fontSize: '24px', fill: '#fff' });
+    textY += this.attendanceText.height + margin;
 
-    this.gameStarted = false;
+    // Progress Bar Setup
+    const barYPosition = textY;  // Align both bars at the same Y-coordinate
 
-    // Create Start Button
+    this.progressBarBackground = this.add.graphics();
+    this.progressBarBackground.fillStyle(0x808080, 1);
+    this.progressBarBackground.fillRect(margin, barYPosition, 200, 20); // Background for the bar
+
+    this.progressBar = this.add.graphics(); // Foreground that fills up
+    updateProgressBar.call(this); // Initialize the progress bar
+
+    // Start Button (centered and larger)
     const startButton = this.add.text(gameWidth / 2, gameHeight / 2, 'Start Game', {
         fontSize: '48px',
         fill: '#ffffff',
@@ -106,18 +93,23 @@ function create() {
         padding: { x: 20, y: 10 }
     }).setOrigin(0.5).setInteractive();
 
-    // Start the game and play music when Start button is clicked
     startButton.on('pointerdown', () => {
         if (!this.gameStarted) {
             this.gameStarted = true;
             startGame.call(this);
             this.music.play({ loop: true });
             this.isMusicPlaying = true;
-
-            // Destroy the Start button to remove it from the game entirely
             startButton.destroy();
         }
     });
+
+    // Music Setup
+    this.music = this.sound.add('music');
+    this.isMusicPlaying = false;
+    this.gamePaused = false;
+
+    // Overlap Detection for Player and Campers
+    this.physics.add.overlap(this.player, this.items, killCamper, null, this);
 
     // Update player target continuously as finger moves
     this.input.on('pointermove', (pointer) => {
@@ -226,8 +218,7 @@ function restartSpawnTimer() {
             }
 
             const difficultyPercent = Math.floor(100 * (1 - this.currentDelay / this.initialDelay));
-            this.difficultyText.setText(`Difficulty: ${difficultyPercent}%`);
-            this.difficultySpeedText.setText(`Camp Popularity: ${this.currentDelay} ms`);
+            updateProgressBar.call(this);
 
             this.time.addEvent({
                 delay: this.currentDelay,
@@ -244,6 +235,52 @@ function restartSpawnTimer() {
     });
 }
 
+function updateProgressBar() {
+    const maxCampers = 100;
+    const progress = Phaser.Math.Clamp(this.campersSpawned / maxCampers, 0, 1);
+    const barWidth = 200 * progress; // Adjust to fill up to 200px width
+
+    this.attendanceText.setText(`Camp Attendance: ${this.campersSpawned}`);
+
+    // Clear and redraw the green progress bar at the same Y-position as the background
+    const barYPosition = this.progressBarBackground.y;
+
+    this.progressBar.clear();
+    this.progressBar.fillStyle(0x00ff00, 1); // Green color for the progress bar
+    this.progressBar.fillRect(20, 154, barWidth, 20);
+}
+
+function spawnCamper() {
+    const camperKey = `camper${this.camperCounter}`;
+    const x = Phaser.Math.Between(100, this.sys.game.config.width - 100);
+    const y = Phaser.Math.Between(100, this.sys.game.config.height - 100);
+
+    const camper = this.items.create(x, y, camperKey);
+    camper.setDisplaySize(50, 50);
+    camper.setVelocity(Phaser.Math.Between(-100, 100), Phaser.Math.Between(-100, 100));
+    camper.setCollideWorldBounds(true);
+    camper.setBounce(1);
+
+    this.campersSpawned++;
+    updateProgressBar.call(this);
+
+    this.camperCounter++;
+    if (this.camperCounter > 4) {
+        this.camperCounter = 1;
+    }
+}
+
+function killCamper(player, camper) {
+    camper.disableBody(true, true);
+    this.campersSpawned = Math.max(this.campersSpawned - 1, 0);
+    updateProgressBar.call(this);
+
+    this.score += 20;
+    this.scoreText.setText('Score: ' + this.score);
+
+    this.currentDelay = Math.max(this.currentDelay - 100, this.minDelay);
+}
+
 function toggleMusic() {
     if (this.isMusicPlaying) {
         this.music.pause();
@@ -253,20 +290,6 @@ function toggleMusic() {
         this.musicButton.setText('Pause Music');
     }
     this.isMusicPlaying = !this.isMusicPlaying;
-}
-
-function killCamper(player, camper) {
-    camper.disableBody(true, true);
-    this.campersSpawned--;
-    this.camperText.setText(`Campers: ${this.campersSpawned}`);
-    this.score += 20;
-    this.scoreText.setText('Score: ' + this.score);
-
-    this.currentDelay = Math.max(this.currentDelay - 100, this.minDelay);
-
-    const difficultyPercent = Math.floor(100 * (1 - this.currentDelay / this.initialDelay));
-    this.difficultyText.setText(`Difficulty: ${difficultyPercent}%`);
-    this.difficultySpeedText.setText(`Camp Popularity: ${this.currentDelay} ms`);
 }
 
 function gameOver() {
