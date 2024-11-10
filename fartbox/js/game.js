@@ -242,11 +242,18 @@ function updateProgressBar() {
 
     this.attendanceText.setText(`Camp Attendance: ${this.campersSpawned}`);
 
-    // Clear and redraw the green progress bar at the same Y-position as the background
-    const barYPosition = this.progressBarBackground.y;
+    // Set the progress bar color based on the number of campers
+    let color;
+    if (this.campersSpawned <= 33) {
+        color = 0x8B0000; // Dark red
+    } else if (this.campersSpawned <= 66) {
+        color = 0xB22222; // Medium red
+    } else {
+        color = 0xFF0000; // Bright red
+    }
 
     this.progressBar.clear();
-    this.progressBar.fillStyle(0x00ff00, 1); // Green color for the progress bar
+    this.progressBar.fillStyle(color, 1); // Set the fill color
     this.progressBar.fillRect(20, 154, barWidth, 20);
 }
 
@@ -298,19 +305,45 @@ function gameOver() {
     this.items.getChildren().forEach(camper => camper.setVelocity(0, 0));
     this.time.removeAllEvents();
 
-    if (this.music.isPlaying) {
-        this.music.pause();
-    }
-
+    // Create a black background rectangle to cover the entire screen
     const gameWidth = this.sys.game.config.width;
     const gameHeight = this.sys.game.config.height;
+
+    const blackBackground = this.add.graphics();
+    blackBackground.fillStyle(0x000000, 0.8); // Black color with opacity (0.8)
+    blackBackground.fillRect(0, 0, gameWidth, gameHeight); // Full-screen rectangle
+
+    // Hide all game objects except for the text
+    this.player.setVisible(false);
+    this.items.getChildren().forEach(camper => camper.setVisible(false));
+    this.scoreText.setVisible(false);
+    this.pauseButton.setVisible(false);
+    this.attendanceText.setVisible(false);
+    this.progressBarBackground.setVisible(false);
+    this.progressBar.setVisible(false);
+
+    // Show game over text
     this.add.text(gameWidth / 2, gameHeight / 2, 'Game Over!', {
         fontSize: '64px',
         fill: '#ff0000'
     }).setOrigin(0.5);
 
-    this.add.text(gameWidth / 2, gameHeight / 2 + 80, 'Press F5 to Restart', {
+    // Show instructions to restart
+    this.add.text(gameWidth / 2, gameHeight / 2 + 80, 'Reload to try again', {
         fontSize: '24px',
         fill: '#ffffff'
     }).setOrigin(0.5);
+
+    // Add a restart button
+    const restartButton = this.add.text(gameWidth / 2, gameHeight / 2 + 160, 'Restart Game', {
+        fontSize: '48px',
+        fill: '#ffffff',
+        backgroundColor: '#000000',
+        padding: { x: 20, y: 10 }
+    }).setOrigin(0.5).setInteractive();
+
+    restartButton.on('pointerdown', () => {
+        // Reload the game
+        location.reload();
+    });
 }
