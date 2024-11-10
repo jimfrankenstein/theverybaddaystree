@@ -97,18 +97,50 @@ function create() {
     this.physics.add.overlap(this.player, this.items, killCamper, null, this);
 
     this.gameStarted = false;
-    this.startText = this.add.text(gameWidth / 2, gameHeight / 2, 'Press Arrow Key to Start', {
-        fontSize: '32px',
-        fill: '#fff'
-    }).setOrigin(0.5);
+
+    // Create Start Button
+    const startButton = this.add.text(gameWidth / 2, gameHeight / 2, 'Start Game', {
+        fontSize: '48px',
+        fill: '#ffffff',
+        backgroundColor: '#000000',
+        padding: { x: 20, y: 10 }
+    }).setOrigin(0.5).setInteractive();
+
+    // Start the game and play music when Start button is clicked
+    startButton.on('pointerdown', () => {
+        if (!this.gameStarted) {
+            this.gameStarted = true;
+            startGame.call(this);
+            this.music.play({ loop: true });
+            this.isMusicPlaying = true;
+
+            // Destroy the Start button to remove it from the game entirely
+            startButton.destroy();
+        }
+    });
+
+    // Update player target continuously as finger moves
+    this.input.on('pointermove', (pointer) => {
+        this.targetX = pointer.worldX;
+        this.targetY = pointer.worldY;
+    });
 }
 
-function update() {
-    if (Phaser.Input.Keyboard.JustDown(this.spacebar)) {
-        togglePause.call(this);
-    }
+function startGame() {
+    // Core logic to start the game, excluding any reference to startButton
+    this.startText?.setVisible(false);  // Only hide start text if it's defined
 
+    restartSpawnTimer.call(this);
+
+    for (let i = 0; i < 8; i++) {
+        spawnCamper.call(this);
+    }
+}
+
+
+function update() {
     if (!this.gameStarted) {
+        // Start the game if an arrow key is pressed
         if (this.cursors.left.isDown || this.cursors.right.isDown || this.cursors.up.isDown || this.cursors.down.isDown) {
             startGame.call(this);
         }
@@ -117,39 +149,38 @@ function update() {
 
     if (this.gamePaused) return;
 
-    const targetSpeed = 320;
-    const acceleration = 50;
-    const decelerationFactor = 0.7;
+    const targetSpeed = 400;
 
-    if (this.cursors.left.isDown) {
-        this.player.setVelocityX(Phaser.Math.Clamp(this.player.body.velocity.x - acceleration, -targetSpeed, 0));
-    } else if (this.cursors.right.isDown) {
-        this.player.setVelocityX(Phaser.Math.Clamp(this.player.body.velocity.x + acceleration, 0, targetSpeed));
+    // Move player to target position if touch input was registered
+    if (this.targetX !== undefined && this.targetY !== undefined) {
+        const distance = Phaser.Math.Distance.Between(this.player.x, this.player.y, this.targetX, this.targetY);
+
+        // Move player toward the target position
+        this.physics.moveTo(this.player, this.targetX, this.targetY, targetSpeed);
+
+        // Stop player when close enough to target
+        if (distance < 10) {
+            this.player.setVelocity(0);
+            this.targetX = undefined; // Clear target to stop movement
+            this.targetY = undefined;
+        }
     } else {
-        this.player.setVelocityX(this.player.body.velocity.x * decelerationFactor);
-        if (Math.abs(this.player.body.velocity.x) < 5) this.player.setVelocityX(0);
-    }
+        // Desktop keyboard controls if no touch input is active
+        if (this.cursors.left.isDown) {
+            this.player.setVelocityX(-targetSpeed);
+        } else if (this.cursors.right.isDown) {
+            this.player.setVelocityX(targetSpeed);
+        } else {
+            this.player.setVelocityX(0);
+        }
 
-    if (this.cursors.up.isDown) {
-        this.player.setVelocityY(Phaser.Math.Clamp(this.player.body.velocity.y - acceleration, -targetSpeed, 0));
-    } else if (this.cursors.down.isDown) {
-        this.player.setVelocityY(Phaser.Math.Clamp(this.player.body.velocity.y + acceleration, 0, targetSpeed));
-    } else {
-        this.player.setVelocityY(this.player.body.velocity.y * decelerationFactor);
-        if (Math.abs(this.player.body.velocity.y) < 5) this.player.setVelocityY(0);
-    }
-}
-
-function startGame() {
-    this.gameStarted = true;
-    this.startText.setVisible(false);
-    this.music.play({ loop: true });
-    this.isMusicPlaying = true;
-
-    restartSpawnTimer.call(this);
-
-    for (let i = 0; i < 8; i++) {
-        spawnCamper.call(this);
+        if (this.cursors.up.isDown) {
+            this.player.setVelocityY(-targetSpeed);
+        } else if (this.cursors.down.isDown) {
+            this.player.setVelocityY(targetSpeed);
+        } else {
+            this.player.setVelocityY(0);
+        }
     }
 }
 
@@ -192,7 +223,7 @@ function restartSpawnTimer() {
             spawnCamper.call(this);
             this.currentDelay = Math.max(this.currentDelay - 50, this.minDelay);
 
-            const difficultyPercent = Math.floor(100 * ((this.initialDelay - this.currentDelay) / (this.initialDelay - this.minDelay)));
+            const difficultyPercent = Math.floor(100 * (1 - this.currentDelay / this.initialDelay));
             this.difficultyText.setText(`Difficulty: ${difficultyPercent}%`);
             this.difficultySpeedText.setText(`Camp Popularity: ${this.currentDelay} ms`);
 
@@ -231,7 +262,7 @@ function killCamper(player, camper) {
 
     this.currentDelay = Math.max(this.currentDelay - 100, this.minDelay);
 
-    const difficultyPercent = Math.floor(100 * ((this.initialDelay - this.currentDelay) / (this.initialDelay - this.minDelay)));
+    const difficultyPercent = Math.floor(100 * (1 - this.currentDelay / this.initialDelay));
     this.difficultyText.setText(`Difficulty: ${difficultyPercent}%`);
     this.difficultySpeedText.setText(`Camp Popularity: ${this.currentDelay} ms`);
 }
