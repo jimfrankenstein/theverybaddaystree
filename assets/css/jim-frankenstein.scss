@@ -65,7 +65,7 @@ main {
                 display: flex;
                 flex-direction: column;
                 align-items: center;
-                gap: var(--spacing-6);
+                gap: var(--spacing-2);
 
                 h1 {
                     text-align: center;
@@ -75,6 +75,7 @@ main {
                 a {
                     display: flex;
                     justify-content: space-between;
+                    align-items: center;
                     text-align: center;
                     padding: var(--spacing-3) var(--spacing-2);
                     background: var(--gray-8);
@@ -86,7 +87,18 @@ main {
 
                     img {
                         display: block;
-                        height: 30px;
+
+                        &.spotify-logo {
+                            height: 30px;
+                        }
+
+                        &.apple-music-logo {
+                            height: 24px;
+                        }
+
+                        &.youtube-music-logo {
+                            height: 24px;
+                        }
                     }
                     span {
                         font: var(--body-text-medium);

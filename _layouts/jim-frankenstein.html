@@ -53,9 +53,21 @@
 
                     <div class="track-interactive-label">
                         <a href="spotify://track/{{ page.spotify_id }}?context=spotify:playlist:5uhuvVfRzb632ZgZKDL0pz&si=d0ff2ce8b68b403a" onclick="fbq('trackCustom', 'LinkClickToSpotify');">
-                            <img src="/images/spotify.png" alt="Spotify Logo" />
+                            <img class="spotify-logo" src="/images/spotify.png" alt="Spotify Logo" />
                             <span>Listen on Spotify</span>
                         </a>
+                        {% if page.apple_music_link %}
+                            <a href="{{ page.apple_music_link }}" onclick="fbq('trackCustom', 'LinkClickToApple');">
+                                <img class="apple-music-logo" src="/images/apple-music.png" alt="Apple Music Logo" />
+                                <span>Listen on Apple Music</span>
+                            </a>
+                        {% endif %}
+                        {% if page.youtube_link %}
+                            <a href="{{ page.youtube_link }}" onclick="fbq('trackCustom', 'LinkClickToYoutube');">
+                                <img class="youtube-music-logo" src="/images/youtube.png" alt="Youtube Logo" />
+                                <span>Listen on Youtube</span>
+                            </a>
+                        {% endif %}
                     </div>
                 </div>
             </div>
