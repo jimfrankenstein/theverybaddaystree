@@ -18,7 +18,7 @@ lyrics: |-
 
     I came so close to nothing, you were all that remained,
     like a warm point of light in the dark
-    your love has found me and it wrapped itself around me
+    your love had found me and it wrapped itself around me
     and I know I’m going home again.
 
     #### Chorus
