@@ -9,7 +9,7 @@ song_description: You ever feel like someone's watching you from the dark? Yeah,
 
 spotify_id: 1JLoFwmDIxGc0qNrt76s1c
 apple_music_link: https://music.apple.com/us/album/i-believe-in-the-mothman-single/1772310979
-youtube_link: https://youtu.be/aWNlg5Mpnys?si=ZxtGQsEZwmB6M3Ma
+youtube_link: https://youtu.be/YRMD8O8_I28?si=DfX2haBSLt95Usow
 
 lyrics: |-
     #### Verse 1
