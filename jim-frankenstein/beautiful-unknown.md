@@ -7,8 +7,8 @@ short_name: beautiful-unknown
 song_name: Beautiful Unknown
 song_description: A hazy, late-night drive through the wreckage of a bad trip, where the universe warps, the music cuts out, and the only thing keeping you from floating off into the abyss is the one person who won’t let you slip. It’s a love song for the lost and found—one foot in the void, one hand in theirs.
 
-spotify_id: 1JLoFwmDIxGc0qNrt76s1c
-# apple_music_link: https://music.apple.com/us/album/beautiful-unknown/890239
+spotify_id: 3Ptj0tk0OR5g9oazsqFhyy
+apple_music_link: https://music.apple.com/us/album/beautiful-unknown-single/1800561411
 youtube_link: https://youtu.be/bwn2IHWz9Q0
 
 lyrics: |-
