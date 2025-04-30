@@ -1,0 +1,154 @@
+{% assign img_path = "/images/songs/" | append: page.short_name %}
+<!DOCTYPE html>
+<html lang="en">
+    {% include meta-head.html %}
+    <body>
+        <style>
+            .art-bkg {
+                background-image: url('{{ img_path }}/track-art-256.jpg');
+            }
+    
+            @supports (background-image: url("{{ img_path }}/track-art-256.avif")) {
+                .art-bkg {
+                    background-image: url('{{ img_path }}/track-art-256.avif');
+                }
+            }
+    
+            @supports (background-image: url("{{ img_path }}/track-art-256.webp")) {
+                .art-bkg {
+                    background-image: url('{{ img_path }}/track-art-256.webp');
+                }
+            }
+        </style>
+        </style>
+        <main>
+            <div class="track-container">
+                <div class="art-bkg"></div>
+                <div class="track-interactive">
+                    <picture class="track-art-picture">
+                        <source srcset="{{ img_path }}/track-art-1024.avif 1024w,
+                                        {{ img_path }}/track-art-512.avif 512w,
+                                        {{ img_path }}/track-art-256.avif 256w"
+                                sizes="(max-width: 256px) 256px,
+                                    (max-width: 512px) 512px,
+                                    1024px"
+                                type="image/avif">
+                        <source srcset="{{ img_path }}/track-art-1024.webp 1024w,
+                                        {{ img_path }}/track-art-512.webp 512w,
+                                        {{ img_path }}/track-art-256.webp 256w"
+                                sizes="(max-width: 256px) 256px,
+                                    (max-width: 512px) 512px,
+                                    1024px"
+                                type="image/webp">
+                        <source srcset="{{ img_path }}/track-art-1024.jpg 1024w,
+                                        {{ img_path }}/track-art-512.jpg 512w,
+                                        {{ img_path }}/track-art-256.jpg 256w"
+                                sizes="(max-width: 256px) 256px,
+                                    (max-width: 512px) 512px,
+                                    1024px"
+                                type="image/jpeg">
+                        <img class="track-art-img" src="{{ img_path }}/track-art-512.jpg"
+                            alt="Track art for {{ page.title }}" />
+                    </picture>
+
+                    <div class="track-interactive-label">
+                        <a href="spotify://track/{{ page.spotify_id }}?context=spotify:playlist:5uhuvVfRzb632ZgZKDL0pz&si=d0ff2ce8b68b403a" onclick="fbq('trackCustom', 'LinkClickToSpotify');">
+                            <img class="spotify-logo" src="/images/spotify.png" alt="Spotify Logo" />
+                            <span>Listen on Spotify</span>
+                        </a>
+                        {% if page.apple_music_link %}
+                            <a href="{{ page.apple_music_link }}" onclick="fbq('trackCustom', 'LinkClickToApple');">
+                                <img class="apple-music-logo" src="/images/apple-music.png" alt="Apple Music Logo" />
+                                <span>Listen on Apple Music</span>
+                            </a>
+                        {% endif %}
+                        {% if page.youtube_link %}
+                            <a href="{{ page.youtube_link }}" onclick="fbq('trackCustom', 'LinkClickToYoutube');">
+                                <img class="youtube-music-logo" src="/images/youtube.png" alt="Youtube Logo" />
+                                <span>Listen on Youtube</span>
+                            </a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <article class="details-container">
+                <header>
+                    <img src="/images/square.jpg" alt="The Very Bad Days hunt the elusive Ghost Bruno" loading="lazy" />
+                    <svg viewBox="0 0 252 50" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The Very Bad Days">
+                        <path d="M0 0H31.2V5.7H19.35V19.2H11.85V5.7H0V0Z" fill="currentColor"/>
+                        <path d="M41.6875 12.33V19.2H34.1875V0H41.6875V6.63H60.8875V0H68.3875V19.2H60.8875V12.33H41.6875Z" fill="currentColor"/>
+                        <path d="M80.0957 11.1V13.5H102.896V19.2H72.5957V0H102.836V5.7H80.0957V8.1H98.6957V11.1H80.0957Z" fill="currentColor"/>
+                        <path d="M114.572 0L126.212 19.2H136.652L148.172 0H139.832L131.432 15.6073L123.032 0H114.572Z" fill="currentColor"/>
+                        <path d="M158.377 11.1V13.5H181.177V19.2H150.877V0H181.117V5.7H158.377V8.1H176.977V11.1H158.377Z" fill="currentColor"/>
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M185.066 0V19.2H192.566V13.8H204.296C205.896 13.8 207.076 13.86 207.836 13.98C208.616 14.1 209.116 14.32 209.336 14.64C209.576 14.94 209.696 15.39 209.696 15.99V19.2H217.196V15.09C217.196 14.21 216.936 13.54 216.416 13.08C215.916 12.6 215.016 12.27 213.716 12.09C213.413 12.0474 213.08 12.0093 212.715 11.9757C212.89 11.9463 213.064 11.9144 213.236 11.88C214.136 11.7 214.936 11.41 215.636 11.01C216.336 10.61 216.886 10.05 217.286 9.33C217.686 8.61 217.886 7.7 217.886 6.6C217.886 4.94 217.456 3.63 216.596 2.67C215.756 1.71 214.606 1.03 213.146 0.630001C211.706 0.21 210.076 0 208.256 0H185.066ZM208.256 8.79H192.566V6H208.256C208.856 6 209.356 6.1 209.756 6.3C210.176 6.48 210.386 6.83 210.386 7.35C210.386 7.91 210.176 8.29 209.756 8.49C209.356 8.69 208.856 8.79 208.256 8.79Z" fill="currentColor"/>
+                        <path d="M239.154 14.31L251.304 0H242.454L235.436 8.93359L228.354 0H219.504L231.654 14.31V19.2H239.154V14.31Z" fill="currentColor"/>
+                        <path d="M228.19 42.1491H220C220 43.1091 220.22 43.9891 220.66 44.7891C221.12 45.5691 221.78 46.2791 222.64 46.9191C223.5 47.5391 224.55 48.0691 225.79 48.5091C227.03 48.9291 228.44 49.2491 230.02 49.4691C231.62 49.6891 233.37 49.7991 235.27 49.7991C238.63 49.7991 241.35 49.5691 243.43 49.1091C245.51 48.6491 247.03 47.9391 247.99 46.9791C248.95 46.0191 249.43 44.7791 249.43 43.2591C249.43 42.3791 249.22 41.6191 248.8 40.9791C248.38 40.3191 247.7 39.7791 246.76 39.3591C245.84 38.9391 244.63 38.6291 243.13 38.4291C241.63 38.2091 239.81 38.0991 237.67 38.0991C235.73 38.0991 234.13 38.0791 232.87 38.0391C231.61 37.9991 230.63 37.9291 229.93 37.8291C229.25 37.7091 228.77 37.5591 228.49 37.3791C228.21 37.1991 228.07 36.9591 228.07 36.6591C228.07 36.0791 228.57 35.6691 229.57 35.4291C230.59 35.1891 232.14 35.0691 234.22 35.0691C236.32 35.0691 237.94 35.2491 239.08 35.6091C240.22 35.9491 240.84 36.4491 240.94 37.1091H248.71C248.71 34.6091 247.49 32.6991 245.05 31.3791C242.63 30.0391 239.12 29.3691 234.52 29.3691C231.38 29.3691 228.76 29.6191 226.66 30.1191C224.58 30.5991 223.02 31.3391 221.98 32.3391C220.96 33.3191 220.45 34.5691 220.45 36.0891C220.45 36.9691 220.67 37.7291 221.11 38.3691C221.55 38.9891 222.23 39.5091 223.15 39.9291C224.09 40.3291 225.28 40.6291 226.72 40.8291C228.18 41.0091 229.91 41.0991 231.91 41.0991C234.59 41.0991 236.67 41.1391 238.15 41.2191C239.63 41.2991 240.66 41.4491 241.24 41.6691C241.82 41.8691 242.11 42.1591 242.11 42.5391C242.11 42.9391 241.93 43.2591 241.57 43.4991C241.21 43.7191 240.59 43.8791 239.71 43.9791C238.85 44.0591 237.67 44.0991 236.17 44.0991C234.65 44.0991 233.31 44.0291 232.15 43.8891C231.01 43.7291 230.1 43.5091 229.42 43.2291C228.74 42.9291 228.33 42.5691 228.19 42.1491Z" fill="currentColor"/>
+                        <path d="M216.8 30L204.65 44.31V49.2H197.15V44.31L185 30H193.85L200.932 38.9336L207.95 30H216.8Z" fill="currentColor"/>
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M164.334 46.29L162.465 49.2H154.215L167.085 30H175.425L188.415 49.2H180.165L178.281 46.29H164.334ZM167.224 41.79L171.279 35.4759L175.367 41.79H167.224Z" fill="currentColor"/>
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M141.348 30C144.048 30 146.278 30.26 148.038 30.78C149.798 31.3 151.178 32.01 152.178 32.91C153.178 33.81 153.878 34.84 154.278 36C154.698 37.14 154.908 38.34 154.908 39.6C154.908 40.86 154.678 42.07 154.218 43.23C153.758 44.37 152.998 45.39 151.938 46.29C150.898 47.19 149.508 47.9 147.768 48.42C146.048 48.94 143.908 49.2 141.348 49.2H119.748V30H141.348ZM127.248 43.2H141.048C142.168 43.2 143.118 43.13 143.898 42.99C144.678 42.83 145.298 42.6 145.758 42.3C146.238 42 146.578 41.63 146.778 41.19C146.998 40.73 147.108 40.2 147.108 39.6C147.108 39 146.998 38.48 146.778 38.04C146.578 37.58 146.238 37.2 145.758 36.9C145.298 36.6 144.678 36.38 143.898 36.24C143.118 36.08 142.168 36 141.048 36H127.248V43.2Z" fill="currentColor"/>
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M100.29 30.78C98.53 30.26 96.3 30 93.6 30H72V49.2H93.6C96.16 49.2 98.3 48.94 100.02 48.42C101.76 47.9 103.15 47.19 104.19 46.29C105.25 45.39 106.01 44.37 106.47 43.23C106.93 42.07 107.16 40.86 107.16 39.6C107.16 38.34 106.95 37.14 106.53 36C106.13 34.84 105.43 33.81 104.43 32.91C103.43 32.01 102.05 31.3 100.29 30.78ZM93.3 43.2H79.5V36H93.3C94.42 36 95.37 36.08 96.15 36.24C96.93 36.38 97.55 36.6 98.01 36.9C98.49 37.2 98.83 37.58 99.03 38.04C99.25 38.48 99.36 39 99.36 39.6C99.36 40.2 99.25 40.73 99.03 41.19C98.83 41.63 98.49 42 98.01 42.3C97.55 42.6 96.93 42.83 96.15 42.99C95.37 43.13 94.42 43.2 93.3 43.2Z" fill="currentColor"/>
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M42.25 49.2L44.1189 46.29H58.0659L59.95 49.2H68.2L55.21 30H46.87L34 49.2H42.25ZM51.0641 35.4759L47.009 41.79H55.1523L51.0641 35.4759Z" fill="currentColor"/>
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M0 30V49.2H20.4C22.6 49.2 24.51 49.01 26.13 48.63C27.75 48.23 29 47.63 29.88 46.83C30.76 46.03 31.2 45.01 31.2 43.77C31.2 42.75 30.93 41.95 30.39 41.37C29.85 40.79 29.1 40.36 28.14 40.08C27.18 39.8 26.06 39.62 24.78 39.54C24.375 39.5147 23.9589 39.4934 23.5319 39.4761C24.2969 39.4051 25.0029 39.3164 25.65 39.21C27.13 38.95 28.26 38.5 29.04 37.86C29.84 37.22 30.24 36.3 30.24 35.1C30.24 33.22 29.32 31.9 27.48 31.14C25.64 30.38 22.78 30 18.9 30H0ZM20.4 43.56H7.5V41.04H20.4C21.1 41.04 21.67 41.09 22.11 41.19C22.55 41.27 22.87 41.4 23.07 41.58C23.29 41.76 23.4 42 23.4 42.3C23.4 42.74 23.16 43.06 22.68 43.26C22.22 43.46 21.46 43.56 20.4 43.56ZM19.14 38.16H7.5V35.64H19.14C20.2 35.64 20.96 35.74 21.42 35.94C21.9 36.12 22.14 36.44 22.14 36.9C22.14 37.34 21.9 37.66 21.42 37.86C20.96 38.06 20.2 38.16 19.14 38.16Z" fill="currentColor"/>
+                    </svg>
+                </header>
+                <article>
+                    <div class="detail-content-block">
+                        <h1>{{ page.song_name }}</h1>
+                        <p class="large">{{ page.song_description }}</p>
+                        {% if page.album and page.album_link %}
+                            <p class="subtext">From <a href="{{ page.album_link }}">{{ page.album }}</a></p>
+                        {% endif %}
+                    </div>
+
+                    <div class="detail-content-block">
+                        <h2>LYRICS</h2>
+                        <div class="markdown-wrapper">{{ page.lyrics | markdownify }}</div>
+                    </div>
+
+                    <div class="detail-content-block">
+                        <h2>ABOUT THE BAND</h2>
+                        <picture class="band-photo-picture" loading="lazy">
+                            <source srcset="/images/band/band-photo-1024.avif 1024w,
+                                            /images/band/band-photo-512.avif 512w,
+                                            /images/band/band-photo-256.avif 256w"
+                                    sizes="(max-width: 256px) 256px,
+                                        (max-width: 512px) 512px,
+                                        1024px"
+                                    type="image/avif">
+                            <source srcset="/images/band/band-photo-1024.webp 1024w,
+                                            /images/band/band-photo-512.webp 512w,
+                                            /images/band/band-photo-256.webp 256w"
+                                    sizes="(max-width: 256px) 256px,
+                                        (max-width: 512px) 512px,
+                                        1024px"
+                                    type="image/webp">
+                            <source srcset="/images/band/band-photo-1024.jpg 1024w,
+                                            /images/band/band-photo-512.jpg 512w,
+                                            /images/band/band-photo-256.jpg 256w"
+                                    sizes="(max-width: 256px) 256px,
+                                        (max-width: 512px) 512px,
+                                        1024px"
+                                    type="image/jpeg">
+                            <img class="band-photo-img" src="/images/band/band-photo-512.jpg" alt="The Very Bad Days hunt the elusive Ghost Bruno" loading="lazy" />
+                        </picture>
+                        <p>Emerging from the scary basement of the Minneapolis music scene, The Very Bad Days are a devilishly funny B-horror flick of a band.</p>
+                        <ul>
+                            <li>Dark and danceable originals. Upbeat, bittersweet ballads. Grotesque puns and 90's covers.</li>
+                            <li>Minimalist, backbeat drumming. Melodic, punk jazz basslines. Powerful axe-chops and chilling solos.</li>
+                            <li>Fantastical grindhouse macabre, all tied up with the unexpected sweetness of alt-rock nostalgia.</li>
+                        </ul>    
+                        <p>These grim humor grunge rock Ghostbusters proudly capture a bizarre spirit all their own. On a terrible, horrible, no good, very bad day, you can catch the band haunting the bars, theaters, and curiosity shops of Minnesota.</p>
+                    </div>
+
+                    <footer class="detail-content-block">
+                        <p class="subtext">© The Very Bad Days, Brian Reed, Daniel Goodroad, Aric Bieganek
+                        <br />
+                        <br />
+                        {{ page.song_credits | newline_to_br }}
+                        </p>
+                    </footer>
+                </article>
+            </article>
+        </main>
+    </body>
+</html>
