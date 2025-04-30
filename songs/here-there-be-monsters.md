@@ -55,9 +55,8 @@ lyrics: |-
 
     #### Chorus
 
-
 song_credits: |-
-    Produced by <a href="https://cloverleaf.audio" target="_blank">Cloverleaf Audio-Visual</a>, Saint Paul MN
-    Recording & Mix Engineer: Matt Ebso
-    Mastering Engineer: Greg Reierson
+    Drum Recording: Matt Ebso, Cloverleaf Audio-Visual
+    All Other Recording: Brian Reed, Ectophonic Groovulator
+    Mix and Mastering Engineer: Jason Obergfoll
 ---
