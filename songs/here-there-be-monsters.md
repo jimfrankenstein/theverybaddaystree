@@ -4,11 +4,11 @@ title: Here There Be Monsters
 short_name: here-there-be-monsters
 
 song_name: Here There Be Monsters
-song_description: Here There Be Monsters slithers in like a half-remembered nightmare from a crooked carnival—equal parts spectacle and warning. Twisted melodies sway on a tightrope above chaos, while the lyrics mutter folklore through a cracked megaphone. It’s the kind of song that feels like it’s watching you back, grinning through sharpened teeth and beckoning you just a little deeper into the woods.
+song_description: Here There Be Monsters slithers in like a half-remembered nightmare from a crooked carnival, equal parts spectacle and warning. Twisted melodies sway on a tightrope above chaos, while the lyrics mutter folklore through a cracked megaphone. It’s the kind of song that feels like it’s watching you back, grinning through sharpened teeth and beckoning you just a little deeper into the woods.
 
-spotify_id: 5PFBqSxHGE7R0hValZBg94
-apple_music_link: https://music.apple.com/us/album/the-cryptozoologist-single/1704963980
-youtube_link: https://youtu.be/94hfl62wlGY
+spotify_id: 5fCfhjNYwvjnNO5jzmYev0
+apple_music_link: https://music.apple.com/us/album/here-there-be-monsters-single/1809531356
+youtube_link: https://youtu.be/1p9DazyMazY
 
 lyrics: |-
     #### Verse 1
