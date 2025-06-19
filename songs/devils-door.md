@@ -4,7 +4,7 @@ title: Devil's Door
 short_name: devils-door
 
 song_name: Devil's Door
-song_description: Devil's Door is a good song
+song_description: A love letter to The Black Tapes podcast and all things eerily unresolved, Devil's Door creeps in like an unexpected guest. A midnight radio transmission or a soundtrack to a séance gone off-script. Built on slow-burning tension and a swirl of strange symbols, this classic rock meets 90's alt ballad is moody, mysterious, and just theatrical enough to make you wonder if something’s really behind that door.
 
 spotify_id: 5fCfhjNYwvjnNO5jzmYev0
 apple_music_link: https://music.apple.com/us/album/here-there-be-monsters-single/1809531356
