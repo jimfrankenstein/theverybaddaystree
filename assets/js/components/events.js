@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // Facebook Pixel tracking
             if (typeof fbq !== 'undefined') {
                 var fbqEvent = 'LinkClickTo' + platform;
-                fbq(fbqEvent);
+                fbq('trackCustom', fbqEvent);
                 console.debug(fbqEvent);
             }
             
