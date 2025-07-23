@@ -4,7 +4,7 @@ title: The Cryptozoologist
 short_name: the-cryptozoologist
 
 song_name: The Cryptozoologist
-song_description: A hushed, heart-heavy folk tale plucked from the underbrush on a weathered tenor guitar. It drifts like smoke through the trees, telling the story of a man searching for something unreal—and finding something even rarer. Part campfire myth, part confession, it’s a quiet hymn for the outcasts, the seekers, and anyone who’s ever longed to be known by something stranger than themselves.
+song_description: A hushed, heart-heavy folk tale plucked from the underbrush on a weathered tenor guitar. It drifts like smoke through the trees, telling the story of a man searching for something unreal and finding something even rarer. Part campfire myth, part confession, it’s a quiet hymn for the outcasts, the seekers, and anyone who’s ever longed to be known by something stranger than themselves.
 
 spotify_id: 5PFBqSxHGE7R0hValZBg94
 apple_music_link: https://music.apple.com/us/album/the-cryptozoologist-single/1704963980

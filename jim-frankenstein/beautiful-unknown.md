@@ -5,7 +5,7 @@ album_link: https://open.spotify.com/album/1GmX76Xij1oQSQO64pdyh3
 short_name: beautiful-unknown
 
 song_name: Beautiful Unknown
-song_description: A hazy, late-night drive through the wreckage of a bad trip, where the universe warps, the music cuts out, and the only thing keeping you from floating off into the abyss is the one person who won’t let you slip. It’s a love song for the lost and found—one foot in the void, one hand in theirs.
+song_description: A hazy, late-night drive through the wreckage of a bad trip, where the universe warps, the music cuts out, and the only thing keeping you from floating off into the abyss is the one person who won’t let you slip. It’s a love song for the lost and found... one foot in the void, one hand in theirs.
 
 spotify_id: 3Ptj0tk0OR5g9oazsqFhyy
 apple_music_link: https://music.apple.com/us/album/beautiful-unknown-single/1800561411
@@ -58,5 +58,5 @@ lyrics: |-
     I know you’ll be waiting.
 
 song_credits: |-
-    Written and Recorded in Minneapolis by Brian Reed
+    Written, Recorded, and Produced in Minneapolis by Brian Reed
 ---
