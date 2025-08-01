@@ -12,7 +12,7 @@ song_description: A haunted pep talk in lo-fi drag, Spooky Song loops like a dus
 
 spotify_id: 6Tvka4hgnheKaOc8gOC55k
 apple_music_link: https://music.apple.com/us/song/spooky-song/1825985235
-youtube_link: https://youtu.be/Hcanj1wTYjQ
+youtube_link: https://youtu.be/RaEekujTv6E
 
 lyrics: |-
     #### Verse 1
