@@ -52,10 +52,13 @@
                     </picture>
 
                     <div class="track-interactive-label">
-                        <!-- <a href="spotify://track/{{ page.spotify_id }}?context=spotify:playlist:5uhuvVfRzb632ZgZKDL0pz&si=f89f15e3366d462a" onclick="fbq('trackCustom', 'LinkClickToSpotify');"> -->
                         <a href="https://open.spotify.com/track/{{ page.spotify_id }}?context=spotify:playlist:5uhuvVfRzb632ZgZKDL0pz&si=f7d3deb7017145b1" onclick="fbq('trackCustom', 'LinkClickToSpotify');">
                             <img class="spotify-logo" src="/images/spotify.png" alt="Spotify Logo" />
                             <span>Listen on Spotify</span>
+                        </a>
+                        <a href="spotify://track/{{ page.spotify_id }}?context=spotify:playlist:5uhuvVfRzb632ZgZKDL0pz&si=f89f15e3366d462a" onclick="fbq('trackCustom', 'LinkClickToSpotify');">
+                            <img class="spotify-logo" src="/images/spotify.png" alt="Spotify Logo" />
+                            <span>Didn't work? Try this link</span>
                         </a>
                         {% if page.apple_music_link %}
                             <a href="{{ page.apple_music_link }}" onclick="fbq('trackCustom', 'LinkClickToApple');">
@@ -76,6 +79,7 @@
                 <article>
                     <div class="detail-content-block">
                         <h1>{{ page.song_name }}</h1>
+                        <p class="subtext" style="padding-bottom: 12px;">(Yo, Spotify is a bit buggy. If the first link doesn't work, try the second one.)</p>
                         <p class="large">{{ page.song_description }}</p>
                         {% if page.album and page.album_link %}
                             <p class="subtext">From <a href="{{ page.album_link }}">{{ page.album }}</a></p>
