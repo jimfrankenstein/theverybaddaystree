@@ -10,9 +10,9 @@ song_description: A haunted pep talk in lo-fi drag, Spooky Song loops like a dus
 
     Sad kids, weird hearts, strange rhythms. You’re not alone. Just spooky.
 
-spotify_id: 3Ptj0tk0OR5g9oazsqFhyy
-apple_music_link: https://music.apple.com/us/album/beautiful-unknown-single/1800561411
-youtube_link: https://youtu.be/bwn2IHWz9Q0
+spotify_id: 6Tvka4hgnheKaOc8gOC55k
+apple_music_link: https://music.apple.com/us/song/spooky-song/1825985235
+youtube_link: https://youtu.be/Hcanj1wTYjQ
 
 lyrics: |-
     #### Verse 1
